@@ -1,3 +1,4 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <app-login *ngIf="functions.loggedIn === false"></app-login>
+  <app-tabs *ngIf="functions.loggedIn === true"></app-tabs>
 </ion-app>

@@ -1,5 +1,7 @@
 {
   "name": "autom8_001",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

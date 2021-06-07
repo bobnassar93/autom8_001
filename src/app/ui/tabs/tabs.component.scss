@@ -1,0 +1,23 @@
+ion-tab-button.tab-selected.fav {
+    --color-selected: var(--ion-color-warning, #ffc409);
+    --ripple-color: var(--ion-color-warning, #ffc409);
+    --background-focused: var(--ion-color-warning, #ffc409);
+    --color-focused: var(--ion-color-warning, #ffc409);
+  }
+
+  ion-tab-button.tab-selected.fav:hover{
+    color: var(--ion-color-warning, #ffc409);
+  }
+  
+  ion-tab-button.tab-selected.lights {
+    --color-selected: var(--ion-color-secondary, #3dc2ff);
+    --ripple-color: var(--ion-color-secondary, #3dc2ff);
+    --background-focused: var(--ion-color-secondary, #3dc2ff);
+  }
+  
+  ion-tab-button.tab-selected.settings {
+    --color-selected: var(--ion-color-tertiary, #5260ff);
+    --ripple-color:var(--ion-color-tertiary, #5260ff);
+    --background-focused: var(--ion-color-tertiary, #5260ff);
+  }
+  
