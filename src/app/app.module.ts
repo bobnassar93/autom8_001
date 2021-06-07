@@ -16,8 +16,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [AppComponent, LoginComponent, TabsComponent, Tab1Component, Tab2Component, Tab3Component],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent],
-  exports: [FunctionsService]
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, FunctionsService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
