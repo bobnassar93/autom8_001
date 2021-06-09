@@ -42,14 +42,14 @@
 
   <ion-grid class="ion-list-pushed" id="grid_display_list">
     <ion-row>
-      <ion-col size='{{12 / grid_col_count}}' *ngFor='let item of display_list'>
+      <ion-col size='{{12 / gridColCount}}' *ngFor='let item of displayList'>
 
         <!-- Grid -->
         <div (click)="manualToggle($event)" class="ion-col-div" [class]="isToggledAll ? 'light-active' : ''"
           name="outputToggleDiv" style="background: {{item.backgroundColor}};"
           *ngIf="orderType === 'grid' && !editingFavorites" [ngClass]="isToggledAll ? 'light-active' : '' ">
 
-          <ion-icon *ngIf="item.icon" name="{{item.icon}}" style="font-size: {{12 / grid_col_count}}vh"></ion-icon>
+          <ion-icon *ngIf="item.icon" name="{{item.icon}}" style="font-size: {{12 / gridColCount}}vh"></ion-icon>
 
            <ion-label class="text-shadow">{{item.toggleName}}</ion-label>
         </div>
@@ -79,7 +79,7 @@
         <!-- End Edit Favorites Grid -->
 
         <!-- List -->
-        <div class="ion-item-div" style="background: {{item.backgroundColor}};" *ngIf="orderType === 'list'">
+        <div class="ion-item-div" style="background: {{item.backgroundColor}};" *ngIf="orderType === 'list'" (contextmenu)="pressedMe($event)">
 
           <ion-grid class="ion-no-margin ion-no-padding full-width" *ngIf="!editingFavorites">
             <ion-row>

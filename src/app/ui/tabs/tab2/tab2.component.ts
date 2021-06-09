@@ -11,32 +11,34 @@ import { TvRemoteComponent } from '../../popover/tv-remote/tv-remote.component';
 export class Tab2Component implements OnInit {
 
   orderType: string;
-  display_list = [];
-  grid_col_count: number;
+  displayList = [];
+  gridColCount: number;
   isToggledAll = false;
   editingFavorites = false;
   favorites = [];
   showFavorites = false;
 
   list = [
-    { ID: 1, toggleName: 'Bedroom night', backgroundColor: '#809bceff', isDimmer: true, dimmingValue: 40, isFavorite: false },
-    { ID: 2, toggleName: 'Kitchen sink', backgroundColor: '#55b493ff', isFavorite: false },
-    { ID: 3, toggleName: 'Saloon indirect', backgroundColor: '#ffde65ff', isFavorite: false },
-    { ID: 4, toggleName: 'Saloon mood', backgroundColor: '#95b8d1ff', isFavorite: false },
-    { ID: 5, toggleName: 'Entrance stairs', backgroundColor: '#09ece5ff', isFavorite: false },
-    { ID: 6, toggleName: 'Stairs to second floor', backgroundColor: '#eac4d5ff', isFavorite: false },
-    { ID: 7, toggleName: 'TV', backgroundColor: '#DD5E5E', icon: 'tv-outline', isFavorite: false, remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline'] },
-    { ID: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
-    { ID: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
-    { ID: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
-    { ID: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
-    { ID: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
-    { ID: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { ID: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv-outline', isFavorite: false, remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline'] }
+    { iD: 1, toggleName: 'Bedroom night', backgroundColor: '#809bceff', isDimmer: true, dimmingValue: 40, isFavorite: false },
+    { iD: 2, toggleName: 'Kitchen sink', backgroundColor: '#55b493ff', isFavorite: false },
+    { iD: 3, toggleName: 'Saloon indirect', backgroundColor: '#ffde65ff', isFavorite: false },
+    { iD: 4, toggleName: 'Saloon mood', backgroundColor: '#95b8d1ff', isFavorite: false },
+    { iD: 5, toggleName: 'Entrance stairs', backgroundColor: '#09ece5ff', isFavorite: false },
+    { iD: 6, toggleName: 'Stairs to second floor', backgroundColor: '#eac4d5ff', isFavorite: false },
+    { iD: 7, toggleName: 'TV', backgroundColor: '#DD5E5E', icon: 'tv-outline', isFavorite: false,
+     remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline'] },
+    { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
+    { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
+    { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
+    { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
+    { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
+    { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
+    { iD: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv-outline', isFavorite: false,
+     remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline'] }
   ];
 
   constructor(public functions: FunctionsService, public popoverCtrl: PopoverController) {
-    this.grid_col_count = functions.getColumnCount();
+    this.gridColCount = functions.getColumnCount();
 
     this.orderType = functions.getOrderType();
 
@@ -47,54 +49,57 @@ export class Tab2Component implements OnInit {
     this.orderType = this.functions.getOrderType();
 
     if (this.orderType === 'list') {
-      this.grid_col_count = 1;
+      this.gridColCount = 1;
     } else {
-      this.grid_col_count = this.functions.getColumnCount();
+      this.gridColCount = this.functions.getColumnCount();
     }
 
     this.reorderItems();
 
-    this.display_list = this.list;
+    this.displayList = this.list;
   }
   counter() {
-    return new Array(this.grid_col_count);
+    return new Array(this.gridColCount);
   }
   toggleAll = (event) => {
     this.isToggledAll = !this.isToggledAll;
-  }
+  };
 
   toggleLight = (item, toggle?): void => {
-  }
+  };
 
   manualToggle = (event, toggle?) => {
     if (this.orderType === 'list') {
       toggle.el.checked = !toggle.el.checked;
     }
     else {
-      if (event.target.tagName === 'DIV')
+      if (event.target.tagName === 'DIV'){
         event.target.classList.toggle('light-active');
-      else
+      }
+      else{
         event.target.parentElement.classList.toggle('light-active');
+      }
     }
-  }
+  };
 
   changeOrderType() {
-    if (this.orderType === 'list')
+    if (this.orderType === 'list'){
       this.orderType = 'grid';
-    else
+    }
+    else{
       this.orderType = 'list';
-
+    }
     this.functions.setOrderType(this.orderType);
     this.reorderItems();
   }
 
   reorderItems = () => {
     if (this.orderType === 'grid') {
-      this.grid_col_count = this.functions.getColumnCount();
+      this.gridColCount = this.functions.getColumnCount();
     } else {
-      this.grid_col_count = 1;
+      this.gridColCount = 1;
     }
-  }
+  };
 
   ionViewWillEnter() {
     this.orderType = this.functions.getOrderType();
@@ -102,19 +107,23 @@ export class Tab2Component implements OnInit {
   }
 
   changeDimmingValue(event, toggle?) {
-    let opacity = event.target.value / 100;
+    const opacity = event.target.value / 100;
 
     if (toggle.el.checked) {
-      toggle.el.style = `--handle-box-shadow: 0 0 10px 0 rgba(233, 181, 39, ${opacity}); box-shadow: 0 0 10px 10px rgba(233, 181, 39, ${opacity});`;
+      toggle.el.style = `--handle-box-shadow: 0 0 10px 0 rgba(233, 181, 39, ${opacity}); 
+      box-shadow: 0 0 10px 10px rgba(233, 181, 39, ${opacity});`;
     } else {
       toggle.el.style = `--handle-box-shadow: 0 0 10px 0 rgba(233, 181, 39, ${opacity});
-    box-shadow: 0 0 10px 10px rgba(233, 181, 39, ${opacity}); ${opacity > 0 ? `--handle-background-checked: rgba(255, 255, 255, ${opacity})` : ''}`;
+    box-shadow: 0 0 10px 10px rgba(233, 181, 39, ${opacity}); 
+    ${opacity > 0 ? `--handle-background-checked: rgba(255, 255, 255, ${opacity})` : ''}`;
     }
 
-    if (opacity === 0)
+    if (opacity === 0){
       toggle.el.checked = false;
-    else
+    }
+    else{
       toggle.el.checked = true;
+    }
   }
 
   toggleFavorites() {
@@ -127,11 +136,11 @@ export class Tab2Component implements OnInit {
         this.editingFavorites = false;
         this.showFavorites = true;
 
-        this.display_list = this.favorites;
+        this.displayList = this.favorites;
       } else {
         this.showFavorites = false;
 
-        this.display_list = this.list;
+        this.displayList = this.list;
       }
     }
   }
@@ -140,7 +149,7 @@ export class Tab2Component implements OnInit {
     this.showFavorites = false;
     this.editingFavorites = true;
 
-    this.display_list = this.list;
+    this.displayList = this.list;
   }
 
   saveFavorites() {
@@ -148,7 +157,7 @@ export class Tab2Component implements OnInit {
       this.editingFavorites = false;
       this.showFavorites = false;
     } else {
-      this.display_list = this.favorites;
+      this.displayList = this.favorites;
       this.editingFavorites = false;
       this.showFavorites = true;
     }
@@ -159,7 +168,7 @@ export class Tab2Component implements OnInit {
       item.isFavorite = true;
       this.favorites.push(item);
     } else {
-      let itemIndex = this.favorites.findIndex((_item) => {
+      const itemIndex = this.favorites.findIndex((_item) => {
         item.isFavorite = false;
         return _item.ID === item.ID;
       });
@@ -168,17 +177,22 @@ export class Tab2Component implements OnInit {
     }
   }
 
-  async remoteButtonPressed(ev: any, ID: number) {
+  async remoteButtonPressed(ev: any, iD: number) {
     const popover = await this.popoverCtrl.create({
       component: TvRemoteComponent,
       event: ev,
-      cssClass: "remote-ion-popover",
+      cssClass: 'remote-ion-popover',
       translucent: true,
       componentProps: {
-        "ID": ID
+        iD
       }
     });
 
     await popover.present();
+  }
+
+  pressedMe(ev: Event){
+    ev.preventDefault();
+    console.log('Pressed me');
   }
 }

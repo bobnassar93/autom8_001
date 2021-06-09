@@ -82,16 +82,18 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
 
 
 .remote-ion-popover{
-  .popover-arrow{
-    display: none;
-  }
+  --width: 100%;
+  --backdrop-opacity: .6;
+  // .popover-arrow{
+  //   display: none;
+  // }
 
-  .popover-content{
-    position: absolute;
-    top: 50% !important;
-    left: 50% !important;
-    // height: 80% !important;
-    width: 80% !important;
-    transform: translate(-50%, -50%);
-  }
+  // .popover-content{
+  //   position: absolute;
+  //   top: 50% !important;
+  //   left: 50% !important;
+  //   height: 80% !important;
+  //   width: 80% !important;
+  //   transform: translate(-50%, -50%) !important;
+  // }
 }
