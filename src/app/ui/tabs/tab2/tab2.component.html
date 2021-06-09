@@ -15,27 +15,27 @@
 <ion-header [translucent]="true">
   <ion-list class="ion-list-fixed">
     <ion-item detail="false" class="ion-item-fixed">
-  
+
       <ion-button class="btn-pushed" size="default" color="light" (click)="toggleFavorites()" *ngIf="!editingFavorites">
         <ion-icon name="star" [color]="showFavorites ? 'warning' : 'dark'"></ion-icon>
       </ion-button>
-  
+
       <ion-button (click)="changeOrderType()" size="default" color="light" *ngIf="!editingFavorites">
         <ion-icon *ngIf="this.orderType==='grid'" name="list"></ion-icon>
         <ion-icon *ngIf="this.orderType==='list'" name="grid-outline"></ion-icon>
       </ion-button>
-  
+
       <ion-button size="default" color="light" *ngIf="!editingFavorites">Create scene</ion-button>
-  
+
       <ion-button size="default" color="light" *ngIf="editingFavorites" (click)="saveFavorites()">Save</ion-button>
-  
+
       <ion-toggle slot="end" (ionChange)="toggleAll($event)" class="ion-toggle-all" *ngIf="!editingFavorites">
       </ion-toggle>
-  
+
       <ion-label *ngIf="editingFavorites" style="margin-left: 10px;">Add to favorites ({{favorites.length}})</ion-label>
-  
+
     </ion-item>
-  
+
   </ion-list>
 </ion-header>
 <ion-content [fullscreen]="true">
@@ -51,10 +51,7 @@
 
           <ion-icon *ngIf="item.icon" name="{{item.icon}}" style="font-size: {{12 / grid_col_count}}vh"></ion-icon>
 
-          <span>
-
-            {{item.toggleName}}
-          </span>
+           <ion-label class="text-shadow">{{item.toggleName}}</ion-label>
         </div>
 
         <!-- Edit Favorites Grid -->
@@ -90,7 +87,7 @@
               <ion-col size="10"
                 (click)="!item.isDimmer && !item.remoteShortcuts ? manualToggle($event, myToggle) : ''">
                 <!-- Label -->
-                <ion-label>{{item.toggleName}}
+                <ion-label class="text-shadow">{{item.toggleName}}
                 </ion-label>
               </ion-col>
 
@@ -117,11 +114,10 @@
 
                 <!-- TV remote buttons -->
                 <div *ngIf="item.remoteShortcuts" class="remote-shortcuts full-height">
-                  <ion-button size="small" *ngFor="let remoteBtn of item.remoteShortcuts"
-                    (click)="remoteButtonPressed()">
+                  <ion-button size="small" *ngFor="let remoteBtn of item.remoteShortcuts">
                     <ion-icon name="{{remoteBtn}}"></ion-icon>
                   </ion-button>
-                  <ion-button>
+                  <ion-button (click)="remoteButtonPressed($event, item.ID)">
                     <ion-icon name="open-outline"></ion-icon>
                   </ion-button>
                 </div>
@@ -143,7 +139,7 @@
               <ion-col size="12" style="text-align: right;">
                 <ion-item style="--padding-start: 10px;">
                   <!-- Toggle -->
-                  <ion-label class="no-padding no-margin">{{item.toggleName}}
+                  <ion-label class="no-padding no-margin text-shadow">{{item.toggleName}}
                   </ion-label>
                   <ion-checkbox style="--background-checked: {{item.backgroundColor}}"
                     (ionChange)="addToFavoritesList(item, $event)" [checked]="item.isFavorite">

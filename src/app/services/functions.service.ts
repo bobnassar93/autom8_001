@@ -5,7 +5,7 @@ import { Injectable, OnInit } from '@angular/core';
 })
 export class FunctionsService implements OnInit {
 
-  public loggedIn = false;
+  public loggedIn = true;
   private columnCount = 2;
   private orderType = 'list';
 

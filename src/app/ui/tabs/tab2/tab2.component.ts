@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 import { FunctionsService } from 'src/app/services/functions.service';
+import { TvRemoteComponent } from '../../popover/tv-remote/tv-remote.component';
 
 @Component({
   selector: 'app-tab2',
@@ -16,50 +18,28 @@ export class Tab2Component implements OnInit {
   favorites = [];
   showFavorites = false;
 
-  // list = [
-  //   { ID: 1, toggleName: 'Bedroom night', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(195,65,42,1) 0%, rgba(199,78,56,1) 41%, rgba(189,46,21,1) 93%)', isDimmer: true, dimmingValue: 40, isFavorite: false },
-  //   // { toggleName: '', backgroundColor: 'transparent url(/assets/imgs/2.jpg) 0 0 / cover no-repeat' },
-  //   // { toggleName: '', backgroundColor: 'transparent url(/assets/imgs/1.jpg) 0 0 / cover no-repeat' },
-  //   // { toggleName: '', backgroundColor: 'transparent url(/assets/imgs/3.jpg) 0 0 / cover no-repeat', isDimmer: true },
-  //   { ID: 2, toggleName: 'Kitchen sink', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(211,166,68,1) 0%, rgba(195,134,0,1) 100%, rgba(255,255,255,1) 100%, rgba(195,134,0,1) 100%)', isFavorite: false },
-  //   { ID: 3, toggleName: 'Saloon indirect', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(96,197,50,1) 0%, rgba(126,208,89,1) 50%, rgba(74,189,21,1) 100%)', isFavorite: false },
-  //   { ID: 4, toggleName: 'Saloon mood', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(152,226,217,1) 0%, rgba(49,197,178,1) 0%, rgba(21,189,167,1) 100%)', isFavorite: false },
-  //   { ID: 5, toggleName: 'Entrance stairs', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(108,132,213,1) 0%, rgba(57,90,199,1) 0%, rgba(21,60,189,1) 100%)', isFavorite: false },
-  //   { ID: 6, toggleName: 'Stairs to second floor', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(163,87,207,1) 0%, rgba(136,37,193,1) 50%, rgba(127,21,189,1) 100%)', isFavorite: false },
-  //   { ID: 7, toggleName: 'TV', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(206,82,92,1) 0%, rgba(190,25,38,1) 30%, rgba(189,21,35,1) 100%)', icon: 'tv-outline', isFavorite: false, remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline'] },
-  //   { ID: 8, toggleName: 'Bedroom night', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(195,65,42,1) 0%, rgba(199,78,56,1) 41%, rgba(189,46,21,1) 93%)', isFavorite: false },
-  //   { ID: 9, toggleName: 'Kitchen sink', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(211,166,68,1) 0%, rgba(195,134,0,1) 100%, rgba(255,255,255,1) 100%, rgba(195,134,0,1) 100%)', isFavorite: false },
-  //   { ID: 10, toggleName: 'Saloon indirect', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(96,197,50,1) 0%, rgba(126,208,89,1) 50%, rgba(74,189,21,1) 100%)', isFavorite: false },
-  //   { ID: 11, toggleName: 'Saloon mood', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(152,226,217,1) 0%, rgba(49,197,178,1) 0%, rgba(21,189,167,1) 100%)', isFavorite: false },
-  //   { ID: 12, toggleName: 'Entrance stairs', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(108,132,213,1) 0%, rgba(57,90,199,1) 0%, rgba(21,60,189,1) 100%)', isFavorite: false },
-  //   { ID: 13, toggleName: 'Stairs to second floor', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(163,87,207,1) 0%, rgba(136,37,193,1) 50%, rgba(127,21,189,1) 100%)', isFavorite: false },
-  //   { ID: 14, toggleName: 'TV', backgroundColor: '-webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(206,82,92,1) 0%, rgba(190,25,38,1) 30%, rgba(189,21,35,1) 100%)', icon: 'tv-outline', isFavorite: false, remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline' ] }
-  // ];
-
-
   list = [
-    { ID: 1, toggleName: 'Bedroom night', backgroundColor: '#be8abf', isDimmer: true, dimmingValue: 40, isFavorite: false },
-    // { toggleName: '', backgroundColor: 'transparent url(/assets/imgs/2.jpg) 0 0 / cover no-repeat' },
-    // { toggleName: '', backgroundColor: 'transparent url(/assets/imgs/1.jpg) 0 0 / cover no-repeat' },
-    // { toggleName: '', backgroundColor: 'transparent url(/assets/imgs/3.jpg) 0 0 / cover no-repeat', isDimmer: true },
-    { ID: 2, toggleName: 'Kitchen sink', backgroundColor: '#f39189', isFavorite: false },
-    { ID: 3, toggleName: 'Saloon indirect', backgroundColor: '#ff7171', isFavorite: false },
-    { ID: 4, toggleName: 'Saloon mood', backgroundColor: '#709fb0', isFavorite: false },
-    { ID: 5, toggleName: 'Entrance stairs', backgroundColor: '#a0c1b8', isFavorite: false },
-    { ID: 6, toggleName: 'Stairs to second floor', backgroundColor: '#f4ebc1', isFavorite: false },
-    { ID: 7, toggleName: 'TV', backgroundColor: '#046582', icon: 'tv-outline', isFavorite: false, remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline'] },
+    { ID: 1, toggleName: 'Bedroom night', backgroundColor: '#809bceff', isDimmer: true, dimmingValue: 40, isFavorite: false },
+    { ID: 2, toggleName: 'Kitchen sink', backgroundColor: '#55b493ff', isFavorite: false },
+    { ID: 3, toggleName: 'Saloon indirect', backgroundColor: '#ffde65ff', isFavorite: false },
+    { ID: 4, toggleName: 'Saloon mood', backgroundColor: '#95b8d1ff', isFavorite: false },
+    { ID: 5, toggleName: 'Entrance stairs', backgroundColor: '#09ece5ff', isFavorite: false },
+    { ID: 6, toggleName: 'Stairs to second floor', backgroundColor: '#eac4d5ff', isFavorite: false },
+    { ID: 7, toggleName: 'TV', backgroundColor: '#DD5E5E', icon: 'tv-outline', isFavorite: false, remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline'] },
     { ID: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
     { ID: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
     { ID: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
     { ID: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
     { ID: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
     { ID: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { ID: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv-outline', isFavorite: false, remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline' ] }
+    { ID: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv-outline', isFavorite: false, remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline'] }
   ];
-  constructor(private functions: FunctionsService) {
+
+  constructor(public functions: FunctionsService, public popoverCtrl: PopoverController) {
     this.grid_col_count = functions.getColumnCount();
 
     this.orderType = functions.getOrderType();
+
 
   }
 
@@ -80,38 +60,14 @@ export class Tab2Component implements OnInit {
     return new Array(this.grid_col_count);
   }
   toggleAll = (event) => {
-
     this.isToggledAll = !this.isToggledAll;
-
-    if (this.orderType === 'list') {
-      // const toggles = document.getElementsByName('outputToggle');
-
-      // toggles.forEach((element: HTMLIonToggleElement) => {
-      //   if (event.target.checked)
-      //     element.checked = true;
-      //   else
-      //     element.checked = false;
-      // });
-    }
-    else {
-      // const col_divs = document.getElementsByName('outputToggleDiv');
-
-      // col_divs.forEach(element => {
-      //   if (event.target.checked)
-      //     element.classList.add('light-active');
-      //   else
-      //     element.classList.remove('light-active');
-      // });
-    }
   }
 
   toggleLight = (item, toggle?): void => {
-    // console.log(item);
   }
 
   manualToggle = (event, toggle?) => {
     if (this.orderType === 'list') {
-      //item.checked = !item.checked;
       toggle.el.checked = !toggle.el.checked;
     }
     else {
@@ -212,9 +168,17 @@ export class Tab2Component implements OnInit {
     }
   }
 
-  remoteButtonPressed(){
-    console.log('remote button pressed');
+  async remoteButtonPressed(ev: any, ID: number) {
+    const popover = await this.popoverCtrl.create({
+      component: TvRemoteComponent,
+      event: ev,
+      cssClass: "remote-ion-popover",
+      translucent: true,
+      componentProps: {
+        "ID": ID
+      }
+    });
+
+    await popover.present();
   }
-
 }
-
