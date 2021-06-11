@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {  PopoverController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
 import { FunctionsService } from 'src/app/services/functions.service';
 import { TvRemoteComponent } from '../../popover/tv-remote/tv-remote.component';
+import { fromEvent } from 'rxjs';
+import { throttleTime, } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tab2',
@@ -25,16 +27,38 @@ export class Tab2Component implements OnInit {
     { iD: 4, toggleName: 'Saloon mood', backgroundColor: '#95b8d1ff', isFavorite: false },
     { iD: 5, toggleName: 'Entrance stairs', backgroundColor: '#09ece5ff', isFavorite: false },
     { iD: 6, toggleName: 'Stairs to second floor', backgroundColor: '#eac4d5ff', isFavorite: false },
-    { iD: 7, toggleName: 'TV', backgroundColor: '#DD5E5E', icon: 'tv-outline', isFavorite: false,
-     remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline'] },
+    {
+      iD: 7, toggleName: 'TV', backgroundColor: '#DD5E5E', icon: 'tv-outline', isFavorite: false,
+      remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline']
+    },
     { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
     { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
     { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
     { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
     { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
     { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { iD: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv-outline', isFavorite: false,
-     remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline'] }
+    { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
+    { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
+    { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
+    { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
+    { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
+    { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
+    { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
+    { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
+    { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
+    { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
+    { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
+    { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
+    { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
+    { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
+    { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
+    { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
+    { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
+    { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
+    {
+      iD: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv-outline', isFavorite: false,
+      remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline']
+    }
   ];
 
   constructor(public functions: FunctionsService, public popoverCtrl: PopoverController) {
@@ -55,6 +79,8 @@ export class Tab2Component implements OnInit {
     this.reorderItems();
 
     this.displayList = this.list;
+    
+    this.logScrollStart(document.querySelector('ion-content'));
   }
   counter() {
     return new Array(this.gridColCount);
@@ -71,20 +97,20 @@ export class Tab2Component implements OnInit {
       toggle.el.checked = !toggle.el.checked;
     }
     else {
-      if (event.target.tagName === 'DIV'){
+      if (event.target.tagName === 'DIV') {
         event.target.classList.toggle('light-active');
       }
-      else{
+      else {
         event.target.parentElement.classList.toggle('light-active');
       }
     }
   };
 
   changeOrderType() {
-    if (this.orderType === 'list'){
+    if (this.orderType === 'list') {
       this.orderType = 'grid';
     }
-    else{
+    else {
       this.orderType = 'list';
     }
     this.functions.setOrderType(this.orderType);
@@ -116,10 +142,10 @@ export class Tab2Component implements OnInit {
     ${opacity > 0 ? `--handle-background-checked: rgba(255, 255, 255, ${opacity})` : ''}`;
     }
 
-    if (opacity === 0){
+    if (opacity === 0) {
       toggle.el.checked = false;
     }
-    else{
+    else {
       toggle.el.checked = true;
     }
   }
@@ -190,8 +216,22 @@ export class Tab2Component implements OnInit {
     await popover.present();
   }
 
-  pressedMe(ev: Event){
+  pressedMe(ev: Event) {
     ev.preventDefault();
     console.log('Pressed me');
+  }
+  logScrollStart(ionContent: HTMLIonContentElement) {
+    const scroll = fromEvent(ionContent, 'ionScroll');
+    const result = scroll.pipe(throttleTime(150));
+    result.subscribe((x: CustomEvent) => {
+      const header = document.querySelector('#_header') as HTMLIonHeaderElement;
+      if(Math.sign(x.detail.deltaY) === 1){
+        header.style.top = '-200px';
+      }else if(Math.sign(x.detail.deltaY) === -1){
+        header.style.top = '0';
+      }
+      // console.log(x.detail.deltaY);
+      // console.log(Math.sign(x.detail.deltaY));
+    });
   }
 }

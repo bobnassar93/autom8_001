@@ -244,3 +244,12 @@ ion-checkbox {
     font-size: 20px;
   }
 }
+
+#_header{
+  top: 0;
+  -webkit-transition: all .75s 0s ease;
+  -moz-transition: all .75s 0s ease;
+  -o-transition: all .75s 0s ease;
+  transition: all .75s 0s ease;
+  z-index: 1;
+}

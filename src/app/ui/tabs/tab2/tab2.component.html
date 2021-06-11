@@ -12,7 +12,7 @@
 
   </ion-toolbar>
 </ion-header>
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" id="_header">
   <ion-list class="ion-list-fixed">
     <ion-item detail="false" class="ion-item-fixed">
 
@@ -38,7 +38,8 @@
 
   </ion-list>
 </ion-header>
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true"
+[scrollEvents]="true">
 
   <ion-grid class="ion-list-pushed" id="grid_display_list">
     <ion-row>
