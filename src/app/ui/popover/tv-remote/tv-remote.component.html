@@ -36,7 +36,7 @@
       </ion-col>
       <!-- Mute volume -->
       <ion-col size="4" class="remote-double-button-v-center" style="flex-direction: row;">
-        <ion-button size="small" color="light">
+        <ion-button size="small" color="light" class="btn-round">
           <ion-icon slot="icon-only" name="volume-mute"></ion-icon>
         </ion-button>
       </ion-col>
@@ -174,13 +174,23 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="12" class="ion-text-center">
+       <ion-col size="4" class="ion-text-center">
+         <ion-button size="small" color="light">
+           <ion-icon slot="icon-only" name="apps"></ion-icon>
+         </ion-button>
+       </ion-col>
+
+      <ion-col size="4" class="ion-text-center">
         <ion-button size="large" color="light">
           0
         </ion-button>
       </ion-col>
+      <ion-col size="4" class="ion-text-center">
+        <ion-button size="small" color="light">
+          <ion-img src="../../../../assets/netflix.png"></ion-img>
+        </ion-button>
+      </ion-col>
     </ion-row>
     <!-- End Numbers -->
-
   </ion-grid>
 </div>
