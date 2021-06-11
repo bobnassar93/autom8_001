@@ -8,7 +8,7 @@ import { FunctionsService } from 'src/app/services/functions.service';
 })
 export class Tab3Component implements OnInit {
   gridCount = 2;
-  color = "";
+  color = '';
     constructor(public functions: FunctionsService) {
     }
     ngOnInit(){
@@ -17,19 +17,20 @@ export class Tab3Component implements OnInit {
     saveSettings() {
       this.functions.setColumnCount(this.gridCount);
     }
-  
+
     addOne() {
-      if (this.gridCount < 12)
+      if (this.gridCount < 6){
         this.gridCount += 1;
+      }
     }
-  
+
     substractOne() {
-      if (this.gridCount > 1)
+      if (this.gridCount > 1){
         this.gridCount -= 1;
+      }
     }
-  
+
     setDefaultLayout(event) {
       this.functions.setOrderType(event.target.value);
     }
   }
-  

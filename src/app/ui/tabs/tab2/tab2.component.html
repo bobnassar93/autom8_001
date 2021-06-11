@@ -114,11 +114,11 @@
 
                 <!-- TV remote buttons -->
                 <div *ngIf="item.remoteShortcuts" class="remote-shortcuts full-height">
-                  <ion-button size="small" *ngFor="let remoteBtn of item.remoteShortcuts">
+                  <ion-button size="small" *ngFor="let remoteBtn of item.remoteShortcuts" fill="clear">
                     <ion-icon name="{{remoteBtn}}"></ion-icon>
                   </ion-button>
-                  <ion-button (click)="remoteButtonPressed($event, item.ID)">
-                    <ion-icon name="open-outline"></ion-icon>
+                  <ion-button (click)="remoteButtonPressed($event, item.ID)" fill="clear">
+                    <ion-icon name="keypad"></ion-icon>
                   </ion-button>
                 </div>
               </ion-col>

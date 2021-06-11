@@ -41,8 +41,9 @@
   margin: 0;
 }
 
-.text-shadow{
-  text-shadow: 0px 1px 4px black;
+.btn-round{
+  border-radius: 30px;
+  --border-radius: 30px;
 }
 
 /* SCSS HEX */
@@ -81,12 +82,30 @@ $gradient-bottom-left: linear-gradient(315deg, #809bceff, #55b493ff, #ffde65ff, 
 $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
 
 
-.remote-ion-popover{
-  --width: 100%;
+.remote-ion-popover {
+  --height: fit-content;
+  --width: fit-content;
+  -webkit-transition: all 0.25s 0s ease;
+  -moz-transition: all 0.25s 0s ease;
+  -o-transition: all 0.25s 0s ease;
+  transition: all 0.25s 0s ease;
   --backdrop-opacity: .6;
-  // .popover-arrow{
-  //   display: none;
-  // }
+
+  backdrop-filter: blur(2px);
+
+  .popover-content{
+    // height: fit-content;
+    border-radius: 20px;
+    transform-origin: center !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+     background: rgba(128, 128, 128, .8) !important;
+     max-height: 95%;
+  }
+  .popover-arrow{
+    display: none;
+  }
 
   // .popover-content{
   //   position: absolute;

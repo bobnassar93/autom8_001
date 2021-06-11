@@ -7,10 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TvRemoteComponent implements OnInit {
 
-  @Input() ID!: number;
+  @Input() iD!: number;
 
   constructor() { }
 
-  ngOnInit() {}
-
+  ngOnInit() { }
 }

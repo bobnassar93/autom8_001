@@ -11,6 +11,9 @@ export class FunctionsService implements OnInit {
 
   constructor() { }
 
+  ngOnInit(): void{
+  }
+
   getColumnCount() {
     return this.columnCount;
   }
@@ -25,9 +28,5 @@ export class FunctionsService implements OnInit {
 
   setOrderType(orderType: string) {
     this.orderType = orderType;
-  }
-
-  ngOnInit(): void{
-
   }
 }

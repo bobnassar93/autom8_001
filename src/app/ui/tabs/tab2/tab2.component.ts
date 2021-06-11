@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import {  PopoverController } from '@ionic/angular';
 import { FunctionsService } from 'src/app/services/functions.service';
 import { TvRemoteComponent } from '../../popover/tv-remote/tv-remote.component';
 
@@ -41,8 +41,6 @@ export class Tab2Component implements OnInit {
     this.gridColCount = functions.getColumnCount();
 
     this.orderType = functions.getOrderType();
-
-
   }
 
   ngOnInit() {
@@ -110,11 +108,11 @@ export class Tab2Component implements OnInit {
     const opacity = event.target.value / 100;
 
     if (toggle.el.checked) {
-      toggle.el.style = `--handle-box-shadow: 0 0 10px 0 rgba(233, 181, 39, ${opacity}); 
+      toggle.el.style = `--handle-box-shadow: 0 0 10px 0 rgba(233, 181, 39, ${opacity});
       box-shadow: 0 0 10px 10px rgba(233, 181, 39, ${opacity});`;
     } else {
       toggle.el.style = `--handle-box-shadow: 0 0 10px 0 rgba(233, 181, 39, ${opacity});
-    box-shadow: 0 0 10px 10px rgba(233, 181, 39, ${opacity}); 
+    box-shadow: 0 0 10px 10px rgba(233, 181, 39, ${opacity});
     ${opacity > 0 ? `--handle-background-checked: rgba(255, 255, 255, ${opacity})` : ''}`;
     }
 
@@ -183,6 +181,7 @@ export class Tab2Component implements OnInit {
       event: ev,
       cssClass: 'remote-ion-popover',
       translucent: true,
+      animated: false,
       componentProps: {
         iD
       }

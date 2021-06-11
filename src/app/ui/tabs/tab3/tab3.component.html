@@ -18,7 +18,7 @@
        <ion-label size="small">Grid columns count</ion-label>
      </ion-list-header>
     <ion-item>
-      <ion-input type="number" readonly (ionChange)='saveSettings()' [(ngModel)]="gridCount" class="ion-input"></ion-input>
+      <ion-input type="number" readonly="true" mode="ios" (ionChange)='saveSettings()' [(ngModel)]="gridCount" class="ion-input"></ion-input>
       <ion-button (click)='substractOne()' class="btn minus-btn">-</ion-button>
       <ion-button (click)='addOne()' class="btn plus-btn">+</ion-button>
     </ion-item>
