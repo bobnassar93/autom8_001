@@ -1,9 +1,78 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Favorites</ion-title>
+    <ion-title slot="start">Favorites</ion-title>
+    <ion-button slot="end" fill="clear" class="fav-edit-btn" (click)="presentModal()"
+      style="--padding-end: 10px;">
+      <ion-icon *ngIf="functions.favorites.length > 0" ios="create-outline" md="create-sharp" size="large" class="edit-icon">
+      </ion-icon>
+      <ion-icon  *ngIf="functions.favorites.length === 0" ios="add-circle" md="add-circle-sharp" size="large" class="edit-icon">
+      </ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>Favorites</h1>
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-list-pushed ion-grid">
+    <ion-row>
+      <ion-col size='12' *ngFor='let fav of functions.favorites' class="ion-col">
+        <!-- List -->
+        <div class="ion-item-div" style="background: {{fav.backgroundColor}};" *ngIf="functions.getOrderType() === 'list'">
+
+          <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid">
+            <ion-row>
+              <!-- Column -->
+              <ion-col size="10"
+                (click)="!fav.isDimmer && !fav.remoteShortcuts ? functions.manualToggle($event, myToggle) : ''"
+                class="ion-col">
+                <!-- Label -->
+                <ion-label class="text-shadow ion-label">{{fav.toggleName}}
+                </ion-label>
+              </ion-col>
+
+              <!-- Column -->
+              <ion-col size="2" style="text-align: right;" class="ion-col">
+                <!-- Toggle -->
+                <ion-toggle name="outputToggle" #myToggle (ionChange)="functions.toggleLight($event, myToggle)"
+                  [checked]="functions.isToggledAll" class="ion-toggle">
+                </ion-toggle>
+              </ion-col>
+            </ion-row>
+            <ion-row style="height: 50px;">
+
+              <!-- Column -->
+              <ion-col size="10" class="full-height ion-col" 
+              (click)="!fav.isDimmer && !fav.remoteShortcuts ? functions.manualToggle($event, myToggle) : ''">
+
+                <!-- Range -->
+                <ion-range min="0" max="100" step="1" value="{{fav.dimmingValue}}" #myRange *ngIf="fav.isDimmer"
+                  (ionChange)="functions.changeDimmingValue($event, myToggle)" pin="true" class="ion-range">
+                  <ion-icon slot="start" size="small" name="sunny"></ion-icon>
+                  <ion-icon slot="end" name="sunny"></ion-icon>
+                </ion-range>
+
+                <!-- TV remote buttons -->
+                <div *ngIf="fav.remoteShortcuts" class="remote-shortcuts full-height">
+                  <ion-button size="small" *ngFor="let remoteBtn of fav.remoteShortcuts" fill="clear">
+                    <ion-icon name="{{remoteBtn}}"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="functions.remoteButtonPressed($event, fav.ID)" fill="clear">
+                    <ion-icon name="keypad"></ion-icon>
+                  </ion-button>
+                </div>
+              </ion-col>
+
+              <!-- Column -->
+              <ion-col size="2" class="ion-col">
+                <!-- Action plan icon -->
+                <ion-icon routerLink='./action-plan' class="ion-item-config-icon ion-no-margin" name="chevron-forward">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>
