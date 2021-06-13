@@ -107,19 +107,29 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   }
 }
 
-@media(prefers-color-scheme: dark) {
-  .text-shadow {
-    text-shadow: 0px 1px 4px black;
-  }
+.text-shadow {
+  text-shadow: 0px 1px 4px black;
 }
 
-@media(prefers-color-scheme: light) {
-  .text-shadow {
-    text-shadow: none;
-  }
+// @media(prefers-color-scheme: dark) {
+//   .text-shadow {
+//     text-shadow: 0px 1px 4px black;
+//   }
+// }
 
-  .ion-label{
-    color: #1f1f1f;
+@media(prefers-color-scheme: light) {
+  // .text-shadow {
+  //   text-shadow: none;
+  // }
+
+  // .ion-label{
+  //   color: var(--ion-color-light, #f4f5f8) !important;
+  // }
+
+  .ion-item-div{
+    box-shadow: 0 3px 5px 0 rgb(0 0 0 / 14%), 
+    0 1px 10px 0 rgb(0 0 0 / 12%), 
+    0 2px 4px -1px rgb(0 0 0 / 30%);
   }
 }
 
@@ -162,25 +172,26 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   font-size: large !important;
   font-weight: bold;
   text-transform: capitalize;
+  color: #f4f5f8 !important;
+  //--color: #f4f5f8 !important;
 }
 
 .ion-item {
   --min-height: 100px;
   margin: 0;
-  border-radius: 10px;
   --background: transparent;
   --inner-padding-start: 0;
   --padding-start: 5px;
   --padding-end: 0;
   --inner-padding-end: 0;
   --border-color: transparent;
-  border-radius: 0;
+  border-radius: 15px;
 }
 
 .ion-item-div {
   --min-height: 100px;
   margin: 0;
-  border-radius: 10px;
+  border-radius: 15px;
   --background: transparent;
   --inner-padding-start: 0;
   --padding-start: 5px;
@@ -202,6 +213,7 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
     padding: 10px;
     outline: none;
     font-size: x-large;
+    color: #f4f5f8 !important;
   }
 }
 
@@ -235,7 +247,7 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   transition: all 0.5s 0s ease-in-out;
 
   div {
-    border-radius: 10px;
+    border-radius: 15px;
     height: 100px;
     background-repeat: no-repeat;
     -webkit-transition: all 0.25s 0s ease-in-out;
@@ -251,11 +263,14 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
     width: 100%;
     font-weight: bold;
     word-break: break-word;
-    border-radius: 11px;
 
     span {
       text-transform: capitalize;
     }
+  }
+
+  ion-icon{
+    color: #f4f5f8 !important;
   }
 }
 

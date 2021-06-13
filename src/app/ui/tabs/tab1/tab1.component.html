@@ -46,8 +46,8 @@
                 <!-- Range -->
                 <ion-range min="0" max="100" step="1" value="{{fav.dimmingValue}}" #myRange *ngIf="fav.isDimmer"
                   (ionChange)="functions.changeDimmingValue($event, myToggle)" pin="true" class="ion-range">
-                  <ion-icon slot="start" size="small" name="sunny"></ion-icon>
-                  <ion-icon slot="end" name="sunny"></ion-icon>
+                  <ion-icon slot="start" size="small" ios="sunny" md="sunny-sharp"></ion-icon>
+                  <ion-icon slot="end" ios="sunny" md="sunny-sharp"></ion-icon>
                 </ion-range>
 
                 <!-- TV remote buttons -->
@@ -64,7 +64,7 @@
               <!-- Column -->
               <ion-col size="2" class="ion-col">
                 <!-- Action plan icon -->
-                <ion-icon routerLink='./action-plan' class="ion-item-config-icon ion-no-margin" name="chevron-forward">
+                <ion-icon routerLink='./action-plan' class="ion-item-config-icon ion-no-margin" ios="chevron-forward" md="chevron-forward-sharp">
                 </ion-icon>
               </ion-col>
             </ion-row>

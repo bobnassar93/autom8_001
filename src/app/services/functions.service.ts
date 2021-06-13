@@ -16,7 +16,7 @@ export class FunctionsService implements OnInit {
     { iD: 5, toggleName: 'Entrance stairs', backgroundColor: '#09ece5ff', isFavorite: false },
     { iD: 6, toggleName: 'Stairs to second floor', backgroundColor: '#eac4d5ff', isFavorite: false },
     {
-      iD: 7, toggleName: 'TV', backgroundColor: '#DD5E5E', icon: 'tv-outline', isFavorite: false,
+      iD: 7, toggleName: 'TV', backgroundColor: '#DD5E5E', icon: 'tv', isFavorite: false,
       remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline']
     },
     { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
@@ -44,7 +44,7 @@ export class FunctionsService implements OnInit {
     { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
     { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
     {
-      iD: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv-outline', isFavorite: false,
+      iD: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv', isFavorite: false,
       remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline']
     }
   ];;

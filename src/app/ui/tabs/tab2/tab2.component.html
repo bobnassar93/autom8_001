@@ -10,12 +10,12 @@
     <ion-item detail="false" class="ion-item-fixed ion-item">
 
       <ion-button class="btn-pushed" size="default" color="light" (click)="toggleFavorites()" *ngIf="!editingFavorites">
-        <ion-icon name="star" color="warning"></ion-icon>
+        <ion-icon ios="star" md="star-sharp" color="warning"></ion-icon>
       </ion-button>
 
       <ion-button (click)="changeOrderType()" size="default" color="light" *ngIf="!editingFavorites">
-        <ion-icon *ngIf="this.orderType==='grid'" name="list"></ion-icon>
-        <ion-icon *ngIf="this.orderType==='list'" name="grid-outline"></ion-icon>
+        <ion-icon *ngIf="this.orderType==='grid'" ios="list" md="list-sharp"></ion-icon>
+        <ion-icon *ngIf="this.orderType==='list'" ios="grid-outline" md="grid-sharp"></ion-icon>
       </ion-button>
 
       <ion-button size="default" color="light" *ngIf="!editingFavorites">Create scene</ion-button>
@@ -43,7 +43,7 @@
           name="outputToggleDiv" style="background: {{item.backgroundColor}};"
           *ngIf="orderType === 'grid' && !editingFavorites" [ngClass]="functions.isToggledAll ? 'light-active' : '' ">
 
-          <ion-icon *ngIf="item.icon" name="{{item.icon}}" style="font-size: {{12 / gridColCount}}vh"></ion-icon>
+          <ion-icon *ngIf="item.icon" ios="{{item.icon}}" md="{{item.icon}}-sharp" style="font-size: {{12 / gridColCount}}vh"></ion-icon>
 
            <ion-label class="text-shadow ion-label">{{item.toggleName}}</ion-label>
         </div>
@@ -105,8 +105,8 @@
                 <!-- Range -->
                 <ion-range min="0" max="100" step="1" value="{{item.dimmingValue}}" #myRange *ngIf="item.isDimmer"
                   (ionChange)="functions.changeDimmingValue($event, myToggle)" class="ion-range" pin="true">
-                  <ion-icon slot="start" size="small" name="sunny"></ion-icon>
-                  <ion-icon slot="end" name="sunny"></ion-icon>
+                  <ion-icon slot="start" size="small" ios="sunny" md="sunny-sharp"></ion-icon>
+                  <ion-icon slot="end" ios="sunny" md="sunny-sharp"></ion-icon>
                 </ion-range>
 
                 <!-- TV remote buttons -->
@@ -115,7 +115,7 @@
                     <ion-icon name="{{remoteBtn}}"></ion-icon>
                   </ion-button>
                   <ion-button (click)="functions.remoteButtonPressed($event, item.iD)" fill="clear">
-                    <ion-icon name="keypad"></ion-icon>
+                    <ion-icon ios="keypad" md="keypad-sharp"></ion-icon>
                   </ion-button>
                 </div>
               </ion-col>
@@ -123,7 +123,7 @@
               <!-- Column -->
               <ion-col size="2" class="ion-col">
                 <!-- Action plan icon -->
-                <ion-icon routerLink='./action-plan' class="ion-item-config-icon ion-no-margin" name="chevron-forward">
+                <ion-icon routerLink='./action-plan' class="ion-item-config-icon ion-no-margin" ios="chevron-forward" md="chevron-forward-sharp">
                 </ion-icon>
               </ion-col>
             </ion-row>
