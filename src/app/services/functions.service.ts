@@ -25,26 +25,26 @@ export class FunctionsService implements OnInit {
     { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
     { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
     { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
-    { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
-    { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
-    { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
-    { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
-    { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
-    { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
-    { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
-    { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
-    { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
-    { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
-    { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
-    { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
-    { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
-    { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
-    { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
+    { iD: 14, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
+    { iD: 15, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
+    { iD: 16, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
+    { iD: 17, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
+    { iD: 18, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
+    { iD: 19, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
+    { iD: 20, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
+    { iD: 21, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
+    { iD: 22, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
+    { iD: 23, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
+    { iD: 24, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
+    { iD: 25, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
+    { iD: 26, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
+    { iD: 27, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
+    { iD: 28, toggleName: 'Saloon indirect', backgroundColor: '#383e56', isFavorite: false },
+    { iD: 29, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
+    { iD: 30, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
+    { iD: 31, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
     {
-      iD: 14, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv', isFavorite: false,
+      iD: 32, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv', isFavorite: false,
       remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline']
     }
   ];;
@@ -135,7 +135,7 @@ export class FunctionsService implements OnInit {
     } else {
       const itemIndex = this.favorites.findIndex((_item) => {
         item.isFavorite = false;
-        return _item.ID === item.ID;
+        return _item.iD === item.iD;
       });
 
       this.favorites.splice(itemIndex, 1);

@@ -31,9 +31,9 @@
 
   </ion-list>
 </ion-header>
-<ion-content [fullscreen]="true"
-[scrollEvents]="true" (ionScroll)="ionScrollStarted($event, myHeader)">
-
+<!-- <ion-content [fullscreen]="true"
+[scrollEvents]="true" (ionScroll)="ionScrollStarted($event, myHeader)"> -->
+<ion-content [fullscreen]="true">
   <ion-grid class="ion-list-pushed ion-grid" id="grid_display_list">
     <ion-row>
       <ion-col size='{{12 / gridColCount}}' *ngFor='let item of functions.outlets' class="ion-col">

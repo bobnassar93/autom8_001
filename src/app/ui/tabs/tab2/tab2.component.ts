@@ -120,10 +120,10 @@ export class Tab2Component implements OnInit {
 
   ionScrollStarted(ev, element){
    // const header = document.querySelector('#_header') as HTMLIonHeaderElement;
-    if (Math.sign(ev.detail.deltaY) === 1) {
-      element.el.style.top = '-200px';
-    } else if (Math.sign(ev.detail.deltaY) === -1) {
-      element.el.style.top = '0';
-    }
+    // if (Math.sign(ev.detail.deltaY) === 1) {
+    //   element.el.style.top = '-200px';
+    // } else if (Math.sign(ev.detail.deltaY) === -1) {
+    //   element.el.style.top = '0';
+    // }
   }
 }
