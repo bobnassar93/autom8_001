@@ -3,9 +3,10 @@
     <ion-title slot="start">Favorites</ion-title>
     <ion-button slot="end" fill="clear" class="fav-edit-btn" (click)="presentModal()"
       style="--padding-end: 10px;">
-      <ion-icon *ngIf="functions.favorites.length > 0" ios="create-outline" md="create-sharp" size="large" class="edit-icon">
+      <ion-icon *ngIf="functions.favorites.length > 0" ios="create-outline" md="create-sharp" size="large" class="edit-icon" color="dark">
       </ion-icon>
-      <ion-icon  *ngIf="functions.favorites.length === 0" ios="add-circle" md="add-circle-sharp" size="large" class="edit-icon">
+      <ion-icon *ngIf="functions.favorites.length === 0" ios="add-circle" md="add-circle-sharp" size="large"
+        class="edit-icon" color="dark">
       </ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -40,7 +41,7 @@
             <ion-row style="height: 50px;">
 
               <!-- Column -->
-              <ion-col size="10" class="full-height ion-col" 
+              <ion-col size="10" class="full-height ion-col"
               (click)="!fav.isDimmer && !fav.remoteShortcuts ? functions.manualToggle($event, myToggle) : ''">
 
                 <!-- Range -->
@@ -74,5 +75,8 @@
     </ion-row>
   </ion-grid>
 
-
+ <ion-button (click)="presentModal()" class="add-favs-btn" color="dark"
+   *ngIf="functions.favorites.length === 0">
+   Add Favorites
+ </ion-button>
 </ion-content>
