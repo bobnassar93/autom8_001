@@ -10,7 +10,11 @@ const routes: Routes = [
   { path: 'tab1', component: Tab1Component },
   { path: 'tab2', component: Tab2Component },
   { path: 'tab3', component: Tab3Component },
-  {path: '**', component: Error404Component}
+  {path: '**', component: Error404Component},
+  {
+    path: 'outlets-modal',
+    loadChildren: () => import('./ui/elements/outlets-modal/outlets-modal.module').then( m => m.OutletsModalPageModule)
+  }
 ];
 
 @NgModule({
