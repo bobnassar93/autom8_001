@@ -75,8 +75,9 @@
     </ion-row>
   </ion-grid>
 
- <ion-button (click)="presentModal()" class="add-favs-btn" color="dark"
-   *ngIf="functions.favorites.length === 0">
-   Add Favorites
- </ion-button>
+  <!-- <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark" (click)="presentModal()" size="small" *ngIf="functions.favorites.length === 0" [translucent]="true">
+      <ion-icon md="add-sharp" ios="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
 </ion-content>

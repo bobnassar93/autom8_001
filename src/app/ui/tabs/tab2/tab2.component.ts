@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { FunctionsService } from 'src/app/services/functions.service';
-import { fromEvent } from 'rxjs';
-import { throttleTime, } from 'rxjs/operators';
 import { TabsComponent } from '../tabs.component';
 
 @Component({
@@ -16,6 +14,7 @@ export class Tab2Component implements OnInit {
   gridColCount: number;
   editingFavorites = false;
   showFavorites = false;
+  header;
 
   constructor(public functions: FunctionsService, public popoverCtrl: PopoverController, public tabs: TabsComponent) {
     this.gridColCount = functions.getColumnCount();
@@ -34,7 +33,7 @@ export class Tab2Component implements OnInit {
 
     this.reorderItems();
 
-    // this.logScrollStart(document.querySelector('ion-content'));
+    this.header = document.querySelector('#_header') as HTMLIonHeaderElement;
   }
   counter() {
     return new Array(this.gridColCount);
@@ -95,7 +94,7 @@ export class Tab2Component implements OnInit {
       this.editingFavorites = false;
       //this.showFavorites = true;
 
-    this.tabs.selectTab('tab1');
+      this.tabs.selectTab('tab1');
 
     }
   }
@@ -106,24 +105,48 @@ export class Tab2Component implements OnInit {
   }
 
   //logScrollStart(ionContent: HTMLIonContentElement) {
-    // const scroll = fromEvent(ionContent, 'ionScroll');
-    // const result = scroll.pipe(throttleTime(150));
-    // result.subscribe((x: CustomEvent) => {
-    //   const header = document.querySelector('#_header') as HTMLIonHeaderElement;
-    //   if (Math.sign(x.detail.deltaY) === 1) {
-    //     header.style.top = '-200px';
-    //   } else if (Math.sign(x.detail.deltaY) === -1) {
-    //     header.style.top = '0';
-    //   }
-    // });
+  // const scroll = fromEvent(ionContent, 'ionScroll');
+  // const result = scroll.pipe(throttleTime(150));
+  // result.subscribe((x: CustomEvent) => {
+  //   const header = document.querySelector('#_header') as HTMLIonHeaderElement;
+  //   if (Math.sign(x.detail.deltaY) === 1) {
+  //     header.style.top = '-200px';
+  //   } else if (Math.sign(x.detail.deltaY) === -1) {
+  //     header.style.top = '0';
+  //   }
+  // });
   //}
 
-  ionScrollStarted(ev, element){
-   // const header = document.querySelector('#_header') as HTMLIonHeaderElement;
+  scrollStarted(ev, element) {
+    // const header = document.querySelector('#_header') as HTMLIonHeaderElement;
     // if (Math.sign(ev.detail.deltaY) === 1) {
     //   element.el.style.top = '-200px';
     // } else if (Math.sign(ev.detail.deltaY) === -1) {
     //   element.el.style.top = '0';
     // }
+  }
+
+  ionScrolling(ev) {
+    if (ev.detail.scrollTop > 500) {
+      document.querySelector('ion-fab').style.display = 'block';
+      document.querySelector('ion-fab').style.opacity = '1';
+    } else if (ev.detail.scrollTop === 0) {
+      document.querySelector('ion-fab').style.opacity = '0';
+      document.querySelector('ion-fab').style.display = 'none';
+    }
+
+    if (Math.sign(ev.detail.deltaY) === 1) {
+      this.header.style.top = `-${this.header.clientHeight}px`;
+    } else if (Math.sign(ev.detail.deltaY) === -1) {
+      this.header.style.top = '0';
+    }
+  }
+
+  getContent() {
+    return document.querySelector('ion-content');
+  }
+
+  scrollToTop() {
+    this.getContent().scrollToTop(500);
   }
 }

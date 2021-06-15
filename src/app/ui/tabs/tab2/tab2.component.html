@@ -33,7 +33,7 @@
 </ion-header>
 <!-- <ion-content [fullscreen]="true"
 [scrollEvents]="true" (ionScroll)="ionScrollStarted($event, myHeader)"> -->
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="ionScrolling($event)">
   <ion-grid class="ion-list-pushed ion-grid" id="grid_display_list">
     <ion-row>
       <ion-col size='{{12 / gridColCount}}' *ngFor='let item of functions.outlets' class="ion-col">
@@ -98,7 +98,7 @@
             <ion-row style="height: 50px;">
 
               <!-- Column -->
-              <ion-col size="10" class="full-height ion-col" 
+              <ion-col size="10" class="full-height ion-col"
               (click)="!item.isDimmer && !item.remoteShortcuts ? functions.manualToggle($event, myToggle) :
                 ''">
 
@@ -149,4 +149,10 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="display: none;">
+    <ion-fab-button (click)="scrollToTop()">
+      <ion-icon ios="chevron-up-circle-outline" md="chevron-up-circle-sharp" color="primary" style="font-size: 30px;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
