@@ -29,7 +29,6 @@ export class Tab1Component implements OnInit {
   async presentModal() {
     const modal = await this.modalController.create({
       component: OutletsModalPage,
-      cssClass: 'my-custom-class',
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl
     });
