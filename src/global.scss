@@ -371,9 +371,9 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
 
 #_header{
   top: 0;
-  -webkit-transition: ease-out 0.5s;
-  -moz-transition: ease-out 0.5s;
-  -o-transition: ease-out 0.5s;
-  transition: ease-out 0.5s;
+  -webkit-transition: ease-out 0.25s;
+  -moz-transition: ease-out 0.25s;
+  -o-transition: ease-out 0.25s;
+  transition: ease-out 0.25s;
   z-index: 1;
 }
