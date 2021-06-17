@@ -10,13 +10,15 @@ import { TabsComponent } from '../tabs.component';
 })
 export class Tab2Component implements OnInit {
 
+  longPressActive = false;
   orderType: string;
   gridColCount: number;
   editingFavorites = false;
   showFavorites = false;
   header;
 
-  constructor(public functions: FunctionsService, public popoverCtrl: PopoverController, public tabs: TabsComponent) {
+  constructor(public functions: FunctionsService,
+    public popoverCtrl: PopoverController, public tabs: TabsComponent) {
     this.gridColCount = functions.getColumnCount();
 
     this.orderType = functions.getOrderType();
@@ -71,16 +73,6 @@ export class Tab2Component implements OnInit {
       this.editingFavorites = true;
     }
     else {
-      // if (!this.showFavorites) {
-      //   this.editingFavorites = false;
-      //   this.showFavorites = true;
-
-      //   this.displayList = this.functions.favorites;
-      // } else {
-      //   this.showFavorites = false;
-
-      //   this.displayList = this.list;
-      // }
       this.tabs.selectTab('tab1');
     }
   }
@@ -92,8 +84,6 @@ export class Tab2Component implements OnInit {
     } else {
       //this.displayList = this.functions.favorites;
       this.editingFavorites = false;
-      //this.showFavorites = true;
-
       this.tabs.selectTab('tab1');
 
     }
@@ -102,28 +92,6 @@ export class Tab2Component implements OnInit {
   pressedMe(ev: Event) {
     ev.preventDefault();
     console.log('Pressed me');
-  }
-
-  //logScrollStart(ionContent: HTMLIonContentElement) {
-  // const scroll = fromEvent(ionContent, 'ionScroll');
-  // const result = scroll.pipe(throttleTime(150));
-  // result.subscribe((x: CustomEvent) => {
-  //   const header = document.querySelector('#_header') as HTMLIonHeaderElement;
-  //   if (Math.sign(x.detail.deltaY) === 1) {
-  //     header.style.top = '-200px';
-  //   } else if (Math.sign(x.detail.deltaY) === -1) {
-  //     header.style.top = '0';
-  //   }
-  // });
-  //}
-
-  scrollStarted(ev, element) {
-    // const header = document.querySelector('#_header') as HTMLIonHeaderElement;
-    // if (Math.sign(ev.detail.deltaY) === 1) {
-    //   element.el.style.top = '-200px';
-    // } else if (Math.sign(ev.detail.deltaY) === -1) {
-    //   element.el.style.top = '0';
-    // }
   }
 
   ionScrolling(ev) {
