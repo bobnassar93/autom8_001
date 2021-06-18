@@ -86,7 +86,7 @@
         <ng-container *ngFor='let item of functions.items; let i = index'>
           <ion-col size="12">
             <ion-item detail="false" lines="full" button="true" (click)="functions.toggleCollapsible(i)"
-              class="collapsible-header">
+              class="ion-no-padding-padding-start">
               <ion-icon name="chevron-forward-outline" *ngIf="!item.open"></ion-icon>
               <ion-icon name="chevron-down-outline" *ngIf="item.open"></ion-icon>
               <ion-label>&nbsp;{{item.name}}</ion-label>
