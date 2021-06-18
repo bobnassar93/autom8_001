@@ -124,6 +124,12 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   text-shadow: 0px 1px 4px black;
 }
 
+@media(prefers-color-scheme: dark) {
+  .collapsible-header{
+    --background-activated: #ffffff;
+  }
+}
+
 @media(prefers-color-scheme: light) {
   .ion-item-div{
     box-shadow: 0 3px 5px 0 rgb(0 0 0 / 14%),

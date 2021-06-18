@@ -10,14 +10,13 @@
 
 <ion-content [fullscreen]="true">
   <!-- Edit Favorites List -->
-
   <ion-grid class="ion-list-pushed ion-grid">
     <ion-row>
       <ng-container *ngFor='let item of functions.items; let i = index'>
 
         <ion-col size="12" class="ion-no-padding-left-right ion-no-padding-top" style="padding-bottom: 10px;">
-          <ion-item detail="false" lines="full" button="false" (click)="functions.toggleCollapsible(i)"
-            class="ion-no-padding-padding-start" style="--background: transparent;">
+          <ion-item detail="false" lines="full" button="true" (click)="functions.toggleCollapsible(i)"
+            class="ion-no-padding-padding-start collapsible-header" style="--background: transparent;">
             <ion-icon name="chevron-forward-outline" *ngIf="!item.open"></ion-icon>
             <ion-icon name="chevron-down-outline" *ngIf="item.open"></ion-icon>
             <ion-label>&nbsp;{{item.name}}</ion-label>
