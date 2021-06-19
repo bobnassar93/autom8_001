@@ -176,10 +176,10 @@
     </ion-row>
   </ion-grid>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="display: none;">
-    <ion-fab-button (click)="scrollToTop()">
+  <div class="ion-fab" vertical="bottom" horizontal="end" slot="fixed" style="display: none;">
+    <ion-button class="ion-fab-button" (click)="scrollToTop()">
       <ion-icon ios="chevron-up-circle-outline" md="chevron-up-circle-sharp" color="primary" style="font-size: 30px;">
       </ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    </ion-button>
+  </div>
 </ion-content>

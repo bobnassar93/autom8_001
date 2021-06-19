@@ -95,12 +95,13 @@ export class Tab2Component implements OnInit {
   }
 
   ionScrolling(ev) {
+    const fabDiv = document.querySelector('.ion-fab') as HTMLIonFabElement;
     if (ev.detail.scrollTop > 500) {
-      document.querySelector('ion-fab').style.display = 'block';
-      document.querySelector('ion-fab').style.opacity = '1';
+      fabDiv.style.display = 'block';
+      fabDiv.style.opacity = '1';
     } else if (ev.detail.scrollTop === 0) {
-      document.querySelector('ion-fab').style.opacity = '0';
-      document.querySelector('ion-fab').style.display = 'none';
+      fabDiv.style.opacity = '0';
+      fabDiv.style.display = 'none';
     }
 
     if (Math.sign(ev.detail.deltaY) === 1) {
