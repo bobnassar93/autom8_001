@@ -13,19 +13,21 @@
         <ion-icon ios="star" md="star-sharp" color="warning"></ion-icon>
       </ion-button>
 
-      <ion-button (click)="changeOrderType()" size="default" color="light" *ngIf="!editingFavorites">
+      <!-- <ion-button (click)="changeOrderType()" size="default" color="light" *ngIf="!editingFavorites">
         <ion-icon *ngIf="this.orderType==='grid'" ios="list" md="list-sharp"></ion-icon>
         <ion-icon *ngIf="this.orderType==='list'" ios="grid-outline" md="grid-sharp"></ion-icon>
-      </ion-button>
+      </ion-button> -->
 
       <ion-button size="default" color="light" *ngIf="!editingFavorites">Create scene</ion-button>
 
       <ion-button size="default" color="light" *ngIf="editingFavorites" (click)="saveFavorites()">Save</ion-button>
 
-      <ion-toggle slot="end" (ionChange)="toggleAll($event)" class="ion-toggle-all ion-toggle" *ngIf="!editingFavorites">
+      <ion-toggle slot="end" (ionChange)="toggleAll($event)" class="ion-toggle-all ion-toggle"
+        *ngIf="!editingFavorites">
       </ion-toggle>
 
-      <ion-label class="ion-label" *ngIf="editingFavorites" style="margin-left: 10px;">Add to favorites ({{functions.favorites.length}})</ion-label>
+      <ion-label class="ion-label" *ngIf="editingFavorites" style="margin-left: 10px;">Add to favorites
+        ({{functions.favorites.length}})</ion-label>
 
     </ion-item>
 
@@ -36,123 +38,148 @@
 <ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="ionScrolling($event)">
   <ion-grid class="ion-list-pushed ion-grid" id="grid_display_list">
     <ion-row>
-      <ion-col size='{{12 / gridColCount}}' *ngFor='let item of functions.outlets' class="ion-col">
 
-        <!-- Grid -->
-        <div (click)="functions.manualToggle($event)" class="ion-col-div" [class]="functions.isToggledAll ? 'light-active' : ''"
-          name="outputToggleDiv" style="background: {{item.backgroundColor}};"
-          *ngIf="orderType === 'grid' && !editingFavorites" [ngClass]="functions.isToggledAll ? 'light-active' : '' ">
+      <!-- Grid -->
+      <ng-container *ngIf="orderType === 'grid'">
+        <ion-col size='{{12 / gridColCount}}' *ngFor='let item of functions.items' class="ion-col">
 
-          <ion-icon *ngIf="item.icon" ios="{{item.icon}}" md="{{item.icon}}-sharp" style="font-size: {{12 / gridColCount}}vh"></ion-icon>
+          <div (click)="functions.manualToggle($event)" class="ion-col-div"
+            [class]="functions.isToggledAll ? 'light-active' : ''" name="outputToggleDiv"
+            style="background: {{item.backgroundColor}};" *ngIf="!editingFavorites"
+            [ngClass]="functions.isToggledAll ? 'light-active' : '' ">
 
-           <ion-label class="text-shadow ion-label">{{item.toggleName}}</ion-label>
-        </div>
+            <ion-icon *ngIf="item.icon" ios="{{item.icon}}" md="{{item.icon}}-sharp"
+              style="font-size: {{12 / gridColCount}}vh"></ion-icon>
 
-        <!-- Edit Favorites Grid -->
-        <div class="ion-col-div" style="background: {{item.backgroundColor}};"
-          *ngIf="orderType === 'grid' && editingFavorites">
+            <ion-label class="text-shadow ion-label">{{item.toggleName}}</ion-label>
+          </div>
 
-          <ion-grid class="ion-grid">
-            <ion-row>
-              <ion-col size="12" class="ion-col">
-                <span>
+          <!-- Edit Favorites Grid -->
+          <div class="ion-col-div" style="background: {{item.backgroundColor}};" *ngIf="editingFavorites">
 
-                  {{item.toggleName}}
-                </span>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col size="12" class="ion-col">
-                <ion-checkbox style="--background-checked: {{item.backgroundColor}}"
-                  (ionChange)="functions.addToFavoritesList(item, $event)" [checked]="item.isFavorite" *ngIf="editingFavorites"
-                  class="ion-checkbox">
-                </ion-checkbox>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-        <!-- End Edit Favorites Grid -->
+            <ion-grid class="ion-grid">
+              <ion-row>
+                <ion-col size="12" class="ion-col">
+                  <span>
 
-        <!-- List -->
-        <div class="ion-item-div" style="background: {{item.backgroundColor}};" *ngIf="orderType === 'list'">
+                    {{item.toggleName}}
+                  </span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12" class="ion-col">
+                  <ion-checkbox style="--background-checked: {{item.backgroundColor}}"
+                    (ionChange)="functions.addToFavoritesList(item, $event)" [checked]="item.isFavorite"
+                    *ngIf="editingFavorites" class="ion-checkbox">
+                  </ion-checkbox>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <!-- End Edit Favorites Grid -->
+        </ion-col>
+      </ng-container>
+      <!-- End of Grid view -->
 
-          <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="!editingFavorites">
-            <ion-row>
-              <!-- Column -->
-              <ion-col size="10"
-                (click)="!item.isDimmer && !item.remoteShortcuts ? functions.manualToggle($event, myToggle) : ''"
-                class="ion-col">
-                <!-- Label -->
-                <ion-label class="text-shadow ion-label">{{item.toggleName}}
-                </ion-label>
-              </ion-col>
+      <!-- List -->
+      <ng-container *ngIf="orderType === 'list'">
+        <ng-container *ngFor='let item of functions.items; let i = index'>
+          <ion-col size="12">
+            <ion-item detail="false" lines="full" button="true" (click)="functions.toggleCollapsible(i)"
+              class="ion-no-padding-padding-start" style="--background: transparent;">
+              <ion-icon name="chevron-forward-outline" *ngIf="!item.open"></ion-icon>
+              <ion-icon name="chevron-down-outline" *ngIf="item.open"></ion-icon>
+              <ion-label>&nbsp;{{item.name}}</ion-label>
+            </ion-item>
+          </ion-col>
+          <ng-container *ngIf="item.open">
+            <ion-col class="transition" size="12" *ngFor='let outlet of item.outlets; let j = index'>
+              <div class="ion-item-div" style="background: {{outlet.backgroundColor}};">
 
-              <!-- Column -->
-              <ion-col size="2" style="text-align: right;" class="ion-col">
-                <!-- Toggle -->
-                <ion-toggle name="outputToggle" #myToggle (ionChange)="functions.toggleLight($event, myToggle)"
-                  [checked]="functions.isToggledAll" class="ion-toggle">
-                </ion-toggle>
-              </ion-col>
-            </ion-row>
-            <ion-row style="height: 50px;">
+                <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="!editingFavorites">
+                  <ion-row>
+                    <!-- Column -->
+                    <ion-col size="10"
+                      (click)="!outlet.isDimmer && !outlet.remoteShortcuts ? functions.manualToggle($event, myToggle) : ''"
+                      class="ion-col">
+                      <!-- Label -->
+                      <ion-label class="text-shadow ion-label">{{outlet.toggleName}}
+                      </ion-label>
+                    </ion-col>
 
-              <!-- Column -->
-              <ion-col size="10" class="full-height ion-col"
-              (click)="!item.isDimmer && !item.remoteShortcuts ? functions.manualToggle($event, myToggle) :
+                    <!-- Column -->
+                    <ion-col size="2" style="text-align: right;" class="ion-col">
+                      <!-- Toggle -->
+                      <ion-toggle name="outputToggle" #myToggle (ionChange)="functions.toggleLight($event, myToggle)"
+                        [checked]="functions.isToggledAll" class="ion-toggle">
+                      </ion-toggle>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="height: 50px;">
+
+                    <!-- Column -->
+                    <ion-col size="10" class="full-height ion-col" (click)="!outlet.isDimmer && !outlet.remoteShortcuts ? functions.manualToggle($event, myToggle) :
                 ''">
 
-                <!-- Range -->
-                <ion-range min="0" max="100" step="1" value="{{item.dimmingValue}}" #myRange *ngIf="item.isDimmer"
-                  (ionChange)="functions.changeDimmingValue($event, myToggle)" class="ion-range" pin="true">
-                  <ion-icon slot="start" size="small" ios="sunny" md="sunny-sharp"></ion-icon>
-                  <ion-icon slot="end" ios="sunny" md="sunny-sharp"></ion-icon>
-                </ion-range>
+                      <!-- Range -->
+                      <ion-range min="0" max="100" step="1" value="{{outlet.dimmingValue}}" #myRange
+                        *ngIf="outlet.isDimmer" (ionChange)="functions.changeDimmingValue($event, myToggle)"
+                        class="ion-range" pin="true">
+                        <ion-icon slot="start" size="small" ios="sunny" md="sunny-sharp"></ion-icon>
+                        <ion-icon slot="end" ios="sunny" md="sunny-sharp"></ion-icon>
+                      </ion-range>
 
-                <!-- TV remote buttons -->
-                <div *ngIf="item.remoteShortcuts" class="remote-shortcuts full-height">
-                  <ion-button size="small" *ngFor="let remoteBtn of item.remoteShortcuts" fill="clear">
-                    <ion-icon name="{{remoteBtn}}"></ion-icon>
-                  </ion-button>
-                  <ion-button (click)="functions.remoteButtonPressed($event, item.iD)" fill="clear">
-                    <ion-icon ios="keypad" md="keypad-sharp"></ion-icon>
-                  </ion-button>
-                </div>
-              </ion-col>
+                      <!-- TV remote buttons -->
+                      <div *ngIf="outlet.remoteShortcuts" class="remote-shortcuts full-height">
+                        <ion-button size="small" *ngFor="let remoteBtn of outlet.remoteShortcuts" fill="clear">
+                          <ion-icon name="{{remoteBtn}}"></ion-icon>
+                        </ion-button>
+                        <ion-button (click)="functions.remoteButtonPressed($event, outlet.iD)" fill="clear">
+                          <ion-icon ios="keypad" md="keypad-sharp"></ion-icon>
+                        </ion-button>
+                      </div></ion-col>
+                      
+                      <!-- Column -->
+                      <ion-col size="2" class="ion-col">
+                        <!-- Action plan icon -->
+                        <ion-icon [routerLink]="['options']" [queryParams]="{ id:j, index:i }" class="ion-item-config-icon ion-no-margin" ios="chevron-forward"
+                          md="chevron-forward-sharp">
+                        </ion-icon>
+                      </ion-col>
+                      </ion-row>
+                      </ion-grid>
 
-              <!-- Column -->
-              <ion-col size="2" class="ion-col">
-                <!-- Action plan icon -->
-                <ion-icon routerLink='./action-plan' class="ion-item-config-icon ion-no-margin" ios="chevron-forward" md="chevron-forward-sharp">
-                </ion-icon>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+                <!-- Edit Favorites List -->
+                <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="editingFavorites">
+                  <ion-row>
+                    <!-- Column -->
+                    <ion-col size="12" style="text-align: right;" class="ion-col">
+                      <ion-item style="--padding-start: 10px;" class="ion-item">
+                        <!-- Toggle -->
+                        <ion-label class="no-padding no-margin text-shadow ion-label">{{outlet.toggleName}}
+                        </ion-label>
+                        <ion-checkbox style="--background-checked: {{outlet.backgroundColor}}"
+                          (ionChange)="functions.addToFavoritesList(outlet, $event)" [checked]="outlet.isFavorite"
+                          class="ion-checkbox">
+                        </ion-checkbox>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </ion-col>
+          </ng-container>
+        </ng-container>
 
-          <!-- Edit Favorites List -->
-          <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="editingFavorites">
-            <ion-row>
-              <!-- Column -->
-              <ion-col size="12" style="text-align: right;" class="ion-col">
-                <ion-item style="--padding-start: 10px;" class="ion-item">
-                  <!-- Toggle -->
-                  <ion-label class="no-padding no-margin text-shadow ion-label">{{item.toggleName}}
-                  </ion-label>
-                  <ion-checkbox style="--background-checked: {{item.backgroundColor}}"
-                    (ionChange)="functions.addToFavoritesList(item, $event)" [checked]="item.isFavorite" class="ion-checkbox">
-                  </ion-checkbox>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-      </ion-col>
+      </ng-container>
+      <!-- End of List view -->
     </ion-row>
   </ion-grid>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="display: none;">
-    <ion-fab-button (click)="scrollToTop()">
-      <ion-icon ios="chevron-up-circle-outline" md="chevron-up-circle-sharp" color="primary" style="font-size: 30px;"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <div class="ion-fab" vertical="bottom" horizontal="end" slot="fixed" style="display: none;">
+    <ion-button class="ion-fab-button" (click)="scrollToTop()">
+      <ion-icon ios="chevron-up-circle-outline" md="chevron-up-circle-sharp" color="primary" style="font-size: 30px;">
+      </ion-icon>
+    </ion-button>
+  </div>
 </ion-content>

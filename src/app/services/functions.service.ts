@@ -8,46 +8,88 @@ import { TvRemoteComponent } from '../ui/popover/tv-remote/tv-remote.component';
 export class FunctionsService implements OnInit {
 
   isToggledAll = false;
-  public outlets = [
-    { iD: 1, toggleName: 'Bedroom night', backgroundColor: '#809bceff', isDimmer: true, dimmingValue: 40, isFavorite: false },
-    { iD: 2, toggleName: 'Kitchen sink', backgroundColor: '#55b493ff', isFavorite: false },
-    { iD: 3, toggleName: 'Saloon indirect', backgroundColor: '#dcc843ff', isFavorite: false },
-    { iD: 4, toggleName: 'Saloon mood', backgroundColor: '#95b8d1ff', isFavorite: false },
-    { iD: 5, toggleName: 'Entrance stairs', backgroundColor: '#09ece5ff', isFavorite: false },
-    { iD: 6, toggleName: 'Stairs to second floor', backgroundColor: '#eac4d5ff', isFavorite: false },
+  colors = [
+    '#809bceff',
+    '#55b493ff',
+    '#ffaa89ff',
+    '#95b8d1ff',
+    '#55bcbbff',
+    '#ff92d5ff',
+    '#dd5e5eff',
+    '#6e7582ff',
+    '#d35d6eff',
+    '#6886c5ff',
+    '#6e5773ff',
+    '#745c97ff',
+  ];
+
+  public items: any = [
     {
-      iD: 7, toggleName: 'TV', backgroundColor: '#DD5E5E', icon: 'tv', isFavorite: false,
-      remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline']
+      name: 'Basement',
+      outlets: [
+        {
+          iD: 7, toggleName: 'TV', backgroundColor: this.getRandomHex(), icon: 'tv', isFavorite: false, isDimmer: false,
+          remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline']
+        },
+        { iD: 8, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 9, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 10, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false }
+      ]
     },
-    { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
-    { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
-    { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#dcc843ff', isFavorite: false },
-    { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
-    { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
-    { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { iD: 14, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
-    { iD: 15, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
-    { iD: 16, toggleName: 'Saloon indirect', backgroundColor: '#dcc843ff', isFavorite: false },
-    { iD: 17, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
-    { iD: 18, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
-    { iD: 19, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { iD: 20, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
-    { iD: 21, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
-    { iD: 22, toggleName: 'Saloon indirect', backgroundColor: '#dcc843ff', isFavorite: false },
-    { iD: 23, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
-    { iD: 24, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
-    { iD: 25, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
-    { iD: 26, toggleName: 'Bedroom night', backgroundColor: '#6e7582', isFavorite: false },
-    { iD: 27, toggleName: 'Kitchen sink', backgroundColor: '#d35d6e', isFavorite: false },
-    { iD: 28, toggleName: 'Saloon indirect', backgroundColor: '#dcc843ff', isFavorite: false },
-    { iD: 29, toggleName: 'Saloon mood', backgroundColor: '#6886c5', isFavorite: false },
-    { iD: 30, toggleName: 'Entrance stairs', backgroundColor: '#6e5773', isFavorite: false },
-    { iD: 31, toggleName: 'Stairs to second floor', backgroundColor: '#745c97', isFavorite: false },
     {
-      iD: 32, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv', isFavorite: false,
-      remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline']
+      name: 'Ground floor',
+      outlets: [
+        { iD: 1, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isDimmer: true, dimmingValue: 40, isFavorite: false },
+        { iD: 2, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 3, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 4, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 5, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 6, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false }
+      ]
+    },
+    {
+      name: 'First floor',
+      outlets: [
+        { iD: 11, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 12, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 14, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 15, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 16, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false }
+      ]
+    },
+    {
+      name: 'Second floor',
+      outlets: [
+        { iD: 17, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 18, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 19, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 20, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 21, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 22, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false }
+      ]
+    },
+    {
+      name: 'Roof',
+      outlets: [
+
+        { iD: 23, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 24, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 25, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 26, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 27, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 28, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 29, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 30, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 31, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        {
+          iD: 32, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv', isFavorite: false,
+          remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline'], isDimmer: false
+        }
+      ]
     }
-  ];;
+  ];
+
   public favorites = [];
   public loggedIn = true;
   private columnCount = 2;
@@ -56,7 +98,6 @@ export class FunctionsService implements OnInit {
   constructor(public popoverCtrl: PopoverController) { }
 
   ngOnInit(): void {
-
   }
 
   getColumnCount() {
@@ -139,6 +180,22 @@ export class FunctionsService implements OnInit {
       });
 
       this.favorites.splice(itemIndex, 1);
+    }
+  }
+
+  getRandomHex() {
+    return this.colors[Math.floor(Math.random() * this.colors.length)];
+  }
+
+  toggleCollapsible(index) {
+    this.items[index].open = !this.items[index].open;
+  }
+
+  getItem(index: string, id?: string) {
+    if(id){
+      return this.items[index].outlets[id];
+    }else{
+      return this.favorites[index];
     }
   }
 }

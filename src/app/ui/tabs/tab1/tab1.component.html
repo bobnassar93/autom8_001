@@ -15,7 +15,7 @@
 <ion-content [fullscreen]="true">
   <ion-grid class="ion-list-pushed ion-grid">
     <ion-row>
-      <ion-col size='12' *ngFor='let fav of functions.favorites' class="ion-col">
+      <ion-col size='12' *ngFor='let fav of functions.favorites; let i = index;' class="ion-col">
         <!-- List -->
         <div class="ion-item-div" style="background: {{fav.backgroundColor}};" *ngIf="functions.getOrderType() === 'list'">
 
@@ -65,7 +65,7 @@
               <!-- Column -->
               <ion-col size="2" class="ion-col">
                 <!-- Action plan icon -->
-                <ion-icon routerLink='./action-plan' class="ion-item-config-icon ion-no-margin" ios="chevron-forward" md="chevron-forward-sharp">
+                <ion-icon [routerLink]="['options']" [queryParams]="{ index:i }" class="ion-item-config-icon ion-no-margin" ios="chevron-forward" md="chevron-forward-sharp">
                 </ion-icon>
               </ion-col>
             </ion-row>

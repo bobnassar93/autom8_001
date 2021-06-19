@@ -37,13 +37,42 @@
   padding: 0 !important;
 }
 
+.ion-no-padding-left-right {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .no-margin {
   margin: 0;
 }
 
-.btn-round{
+.btn-round {
   border-radius: 30px;
   --border-radius: 30px;
+}
+
+.ion-no-padding-padding-start {
+  --padding-start: 0;
+}
+
+.ion-no-padding-top {
+  --padding-top: 0;
+}
+
+.section {
+  padding: 10px;
+}
+
+.transition {
+  -webkit-transition: ease-out 0.25s;
+  -moz-transition: ease-out 0.25s;
+  -o-transition: ease-out 0.25s;
+  transition: ease-out 0.25s;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+  --border-radius: 5px;
 }
 
 /* SCSS HEX */
@@ -71,16 +100,86 @@ $fluorescent-blue: rgba(9, 236, 229, 1);
 $queen-pink: rgba(234, 196, 213, 1);
 
 /* SCSS Gradient */
-$gradient-top: linear-gradient(0deg, #809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-$gradient-right: linear-gradient(90deg, #809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-$gradient-bottom: linear-gradient(180deg, #809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-$gradient-left: linear-gradient(270deg, #809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-$gradient-top-right: linear-gradient(45deg, #809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-$gradient-bottom-right: linear-gradient(135deg, #809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-$gradient-top-left: linear-gradient(225deg, #809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-$gradient-bottom-left: linear-gradient(315deg, #809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-$gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #09ece5ff, #eac4d5ff);
-
+$gradient-top: linear-gradient(
+  0deg,
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
+$gradient-right: linear-gradient(
+  90deg,
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
+$gradient-bottom: linear-gradient(
+  180deg,
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
+$gradient-left: linear-gradient(
+  270deg,
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
+$gradient-top-right: linear-gradient(
+  45deg,
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
+$gradient-bottom-right: linear-gradient(
+  135deg,
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
+$gradient-top-left: linear-gradient(
+  225deg,
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
+$gradient-bottom-left: linear-gradient(
+  315deg,
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
+$gradient-radial: radial-gradient(
+  #809bceff,
+  #55b493ff,
+  #ffde65ff,
+  #95b8d1ff,
+  #09ece5ff,
+  #eac4d5ff
+);
 
 .remote-ion-popover {
   --height: fit-content;
@@ -89,20 +188,20 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   -moz-transition: all 0.25s 0s ease;
   -o-transition: all 0.25s 0s ease;
   transition: all 0.25s 0s ease;
-  --backdrop-opacity: .6;
+  --backdrop-opacity: 0.6;
   backdrop-filter: blur(2px);
 
-  .popover-content{
+  .popover-content {
     // height: fit-content;
     border-radius: 20px;
     transform-origin: center !important;
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
-     background: rgba(128, 128, 128, .8) !important;
-     max-height: 95%;
+    background: rgba(128, 128, 128, 0.8) !important;
+    max-height: 95%;
   }
-  .popover-arrow{
+  .popover-arrow {
     display: none;
   }
 }
@@ -111,25 +210,16 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   text-shadow: 0px 1px 4px black;
 }
 
-// @media(prefers-color-scheme: dark) {
-//   .text-shadow {
-//     text-shadow: 0px 1px 4px black;
-//   }
-// }
+@media (prefers-color-scheme: dark) {
+  .collapsible-header {
+    --background-activated: #ffffff;
+  }
+}
 
-@media(prefers-color-scheme: light) {
-  // .text-shadow {
-  //   text-shadow: none;
-  // }
-
-  // .ion-label{
-  //   color: var(--ion-color-light, #f4f5f8) !important;
-  // }
-
-  .ion-item-div{
-    box-shadow: 0 3px 5px 0 rgb(0 0 0 / 14%),
-    0 1px 10px 0 rgb(0 0 0 / 12%),
-    0 2px 4px -1px rgb(0 0 0 / 30%);
+@media (prefers-color-scheme: light) {
+  .ion-item-div {
+    box-shadow: 0 3px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%),
+      0 2px 4px -1px rgb(0 0 0 / 30%);
   }
 }
 
@@ -173,7 +263,6 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   font-weight: bold;
   text-transform: capitalize;
   color: #f4f5f8 !important;
-  //--color: #f4f5f8 !important;
 }
 
 .ion-item {
@@ -241,10 +330,10 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
 
 .ion-col {
   // margin: auto;
-  -webkit-transition: all 0.5s 0s ease-in-out;
-  -moz-transition: all 0.5s 0s ease-in-out;
-  -o-transition: all 0.5s 0s ease-in-out;
-  transition: all 0.5s 0s ease-in-out;
+  // -webkit-transition: all 0.5s 0s ease-in-out;
+  // -moz-transition: all 0.5s 0s ease-in-out;
+  // -o-transition: all 0.5s 0s ease-in-out;
+  // transition: all 0.5s 0s ease-in-out;
 
   div {
     border-radius: 15px;
@@ -269,7 +358,7 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
     }
   }
 
-  ion-icon{
+  ion-icon {
     color: #f4f5f8 !important;
   }
 }
@@ -319,7 +408,7 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
 }
 
 .md {
-  @media(prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
     .ion-list-fixed {
       background-color: rgb(31 31 31);
       border-top: 1px solid #313131;
@@ -350,7 +439,7 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   overflow-x: auto;
 
   ion-button {
-    color: rgb(34 36 40);
+    //color: rgb(34 36 40);
     // --background: transparent;
     margin-bottom: 0;
     height: 35px;
@@ -369,11 +458,11 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   }
 }
 
-#_header{
+#_header {
   top: 0;
-  -webkit-transition: ease-out 0.5s;
-  -moz-transition: ease-out 0.5s;
-  -o-transition: ease-out 0.5s;
-  transition: ease-out 0.5s;
+  -webkit-transition: ease-out 0.25s;
+  -moz-transition: ease-out 0.25s;
+  -o-transition: ease-out 0.25s;
+  transition: ease-out 0.25s;
   z-index: 1;
 }

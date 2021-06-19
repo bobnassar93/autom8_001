@@ -1,8 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Outlets</ion-title>
-    <ion-button slot="end" fill="clear" (click)="dismiss()"
-      style="--padding-end: 10px;">
+    <ion-button slot="end" fill="clear" (click)="dismiss()" style="--padding-end: 10px;">
       <span *ngIf="functions.favorites.length === 0">Close</span>
       <span *ngIf="functions.favorites.length > 0">Done</span>
     </ion-button>
@@ -10,33 +9,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<!-- Edit Favorites List -->
+  <!-- Edit Favorites List -->
+  <ion-grid class="ion-list-pushed ion-grid">
+    <ion-row>
+      <ng-container *ngFor='let item of functions.items; let i = index'>
 
-<ion-grid class="ion-list-pushed ion-grid">
-  <ion-row>
-    <ion-col size='12' *ngFor='let outlet of functions.outlets' class="ion-col">
-      <div class="ion-item-div" style="background: {{outlet.backgroundColor}};">
-        <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid">
-          <ion-row>
-            <!-- Column -->
-            <ion-col size="12" style="text-align: right;" class="ion-col">
-              <ion-item style="--padding-start: 10px;" class="ion-item">
-                <!-- Toggle -->
-                <ion-label class="no-padding no-margin text-shadow ion-label">{{outlet.toggleName}}
-                </ion-label>
-                <ion-checkbox style="--background-checked: {{outlet.backgroundColor}}"
-                  (ionChange)="functions.addToFavoritesList(outlet, $event)" [checked]="outlet.isFavorite" class="ion-checkbox">
-                </ion-checkbox>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-    </ion-col>
+        <ion-col size="12" class="ion-no-padding-left-right ion-no-padding-top" style="padding-bottom: 10px;">
+          <ion-item detail="false" lines="full" button="true" (click)="functions.toggleCollapsible(i)"
+            class="ion-no-padding-padding-start collapsible-header" style="--background: transparent;">
+            <ion-icon name="chevron-forward-outline" *ngIf="!item.open"></ion-icon>
+            <ion-icon name="chevron-down-outline" *ngIf="item.open"></ion-icon>
+            <ion-label>&nbsp;{{item.name}}</ion-label>
+          </ion-item>
+        </ion-col>
+        <ng-container *ngIf="item.open">
+          <ion-col size='12' class="ion-col" *ngFor='let outlet of item.outlets'>
+            <div class="ion-item-div" style="background: {{outlet.backgroundColor}};">
+              <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid">
+                <ion-row>
+                  <!-- Column -->
+                  <ion-col size="12" style="text-align: right;" class="ion-col">
+                    <ion-item style="--padding-start: 10px;" class="ion-item">
+                      <!-- Toggle -->
+                      <ion-label class="no-padding no-margin text-shadow ion-label">{{outlet.toggleName}}
+                      </ion-label>
+                      <ion-checkbox style="--background-checked: {{outlet.backgroundColor}}"
+                        (ionChange)="functions.addToFavoritesList(outlet, $event)" [checked]="outlet.isFavorite"
+                        class="ion-checkbox">
+                      </ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-col>
+        </ng-container>
+      </ng-container>
     </ion-row>
-    </ion-grid>
-
-
-
-
+  </ion-grid>
 </ion-content>

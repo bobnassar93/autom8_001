@@ -16,13 +16,14 @@ import { TvRemoteComponent } from './ui/popover/tv-remote/tv-remote.component';
 import { FloorComponent } from './ui/elements/floor/floor.component';
 import { ItemComponent } from './ui/elements/item/item.component';
 import { RoomComponent } from './ui/elements/room/room.component';
+import { OutletOptionsComponent } from './ui/elements/outlet-options/outlet-options.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent,
      TabsComponent, Tab1Component,
       Tab2Component, Tab3Component, Error404Component,
        TvRemoteComponent, FloorComponent,
-        ItemComponent, RoomComponent],
+        ItemComponent, RoomComponent, OutletOptionsComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, FunctionsService],
