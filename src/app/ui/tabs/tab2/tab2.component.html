@@ -93,7 +93,7 @@
             </ion-item>
           </ion-col>
           <ng-container *ngIf="item.open">
-            <ion-col size="12" *ngFor='let outlet of item.outlets'>
+            <ion-col class="transition" size="12" *ngFor='let outlet of item.outlets; let j = index'>
               <div class="ion-item-div" style="background: {{outlet.backgroundColor}};">
 
                 <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="!editingFavorites">
@@ -137,18 +137,17 @@
                         <ion-button (click)="functions.remoteButtonPressed($event, outlet.iD)" fill="clear">
                           <ion-icon ios="keypad" md="keypad-sharp"></ion-icon>
                         </ion-button>
-                      </div>
-                    </ion-col>
-
-                    <!-- Column -->
-                    <ion-col size="2" class="ion-col">
-                      <!-- Action plan icon -->
-                      <ion-icon routerLink='./action-plan' class="ion-item-config-icon ion-no-margin"
-                        ios="chevron-forward" md="chevron-forward-sharp">
-                      </ion-icon>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
+                      </div></ion-col>
+                      
+                      <!-- Column -->
+                      <ion-col size="2" class="ion-col">
+                        <!-- Action plan icon -->
+                        <ion-icon [routerLink]="['options']" [queryParams]="{ id:j, index:i }" class="ion-item-config-icon ion-no-margin" ios="chevron-forward"
+                          md="chevron-forward-sharp">
+                        </ion-icon>
+                      </ion-col>
+                      </ion-row>
+                      </ion-grid>
 
                 <!-- Edit Favorites List -->
                 <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="editingFavorites">

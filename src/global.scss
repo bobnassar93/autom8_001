@@ -59,6 +59,17 @@
   --padding-top: 0;
 }
 
+.section{
+  padding: 10px;
+}
+
+.transition{
+  -webkit-transition: ease-out 0.25s;
+  -moz-transition: ease-out 0.25s;
+  -o-transition: ease-out 0.25s;
+  transition: ease-out 0.25s;
+}
+
 /* SCSS HEX */
 $blue-gray: #809bceff;
 $mint: #55b493ff;
@@ -245,10 +256,10 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
 
 .ion-col {
   // margin: auto;
-  -webkit-transition: all 0.5s 0s ease-in-out;
-  -moz-transition: all 0.5s 0s ease-in-out;
-  -o-transition: all 0.5s 0s ease-in-out;
-  transition: all 0.5s 0s ease-in-out;
+  // -webkit-transition: all 0.5s 0s ease-in-out;
+  // -moz-transition: all 0.5s 0s ease-in-out;
+  // -o-transition: all 0.5s 0s ease-in-out;
+  // transition: all 0.5s 0s ease-in-out;
 
   div {
     border-radius: 15px;
@@ -354,7 +365,7 @@ $gradient-radial: radial-gradient(#809bceff, #55b493ff, #ffde65ff, #95b8d1ff, #0
   overflow-x: auto;
 
   ion-button {
-    color: rgb(34 36 40);
+    //color: rgb(34 36 40);
     // --background: transparent;
     margin-bottom: 0;
     height: 35px;

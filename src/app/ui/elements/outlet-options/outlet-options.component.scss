@@ -1,0 +1,16 @@
+ion-input[type="color"] {
+  height: 50px;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+ion-input > input {
+  padding: 0;
+  height: 50px;
+}
+
+.ios {
+  .preview-item {
+    --padding-start: 10px;
+  }
+}

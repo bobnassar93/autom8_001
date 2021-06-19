@@ -187,7 +187,15 @@ export class FunctionsService implements OnInit {
     return this.colors[Math.floor(Math.random() * this.colors.length)];
   }
 
-  toggleCollapsible(index){
+  toggleCollapsible(index) {
     this.items[index].open = !this.items[index].open;
+  }
+
+  getItem(index: string, id?: string) {
+    if(id){
+      return this.items[index].outlets[id];
+    }else{
+      return this.favorites[index];
+    }
   }
 }
