@@ -10,16 +10,24 @@ import { FunctionsService } from 'src/app/services/functions.service';
 export class OutletOptionsComponent implements OnInit {
 
   item;
+  index;
+  id;
   constructor(public functions: FunctionsService, public router: ActivatedRoute) { }
 
   ngOnInit() {
-    const id = this.router.snapshot.queryParamMap.get('id');
-    const index = this.router.snapshot.queryParamMap.get('index');
+    this.id = this.router.snapshot.queryParamMap.get('id');
+    this.index = this.router.snapshot.queryParamMap.get('index');
 
-    this.item = this.functions.getItem(index, id);
+    this.item = this.functions.getItem(this.index, this.id);
   }
 
   previewColor(color, el) {
     el.style = `background: ${color}`;
+
+    this.functions.items[this.index].outlets[this.id].backgroundColor = color;
+  }
+
+  editOutlet(){
+    console.log('saved');
   }
 }
