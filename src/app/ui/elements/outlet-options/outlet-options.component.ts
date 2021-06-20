@@ -17,7 +17,6 @@ export class OutletOptionsComponent implements OnInit {
   ngOnInit() {
     this.id = this.router.snapshot.queryParamMap.get('id');
     this.index = this.router.snapshot.queryParamMap.get('index');
-
     this.item = this.functions.getItem(this.index, this.id);
   }
 
