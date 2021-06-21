@@ -17,10 +17,18 @@ export class FunctionsService implements OnInit {
     '#ff92d5ff',
     '#dd5e5eff',
     '#6e7582ff',
-    '#d35d6eff',
+    '#e6913bff',
     '#6886c5ff',
     '#6e5773ff',
     '#745c97ff',
+    '#e2afffff',
+    '#a2d2ffff',
+    '#ffafccff',
+    '#0096c7ff',
+    '#446583ff',
+    '#9f6af8ff',
+    '#86e8d2ff',
+    '#6e5bd8ff',
   ];
 
   public items: any = [
@@ -28,62 +36,62 @@ export class FunctionsService implements OnInit {
       name: 'Basement',
       outlets: [
         {
-          iD: 7, toggleName: 'TV', backgroundColor: this.getRandomHex(), icon: 'tv', isFavorite: false, isDimmer: false,
+          iD: 7, toggleName: 'TV', backgroundColor: '#809bceff', icon: 'tv', isFavorite: false, isDimmer: false,
           remoteShortcuts: ['power-outline', 'volume-high-outline', 'volume-low-outline', 'volume-mute-outline']
         },
-        { iD: 8, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 9, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 10, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false }
+        { iD: 8, toggleName: 'Bedroom night', backgroundColor: '#55b493ff', isFavorite: false, isDimmer: false },
+        { iD: 9, toggleName: 'Kitchen sink', backgroundColor: '#ffaa89ff', isFavorite: false, isDimmer: false },
+        { iD: 10, toggleName: 'Saloon indirect', backgroundColor: '#95b8d1ff', isFavorite: false, isDimmer: false }
       ]
     },
     {
       name: 'Ground floor',
       outlets: [
-        { iD: 1, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isDimmer: true, dimmingValue: 40, isFavorite: false },
-        { iD: 2, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 3, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 4, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 5, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 6, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false }
+        { iD: 1, toggleName: 'Bedroom night', backgroundColor: '#55bcbbff', isDimmer: true, dimmingValue: 40, isFavorite: false },
+        { iD: 2, toggleName: 'Kitchen sink', backgroundColor: '#ff92d5ff', isFavorite: false, isDimmer: false },
+        { iD: 3, toggleName: 'Saloon indirect', backgroundColor: '#dd5e5eff', isFavorite: false, isDimmer: false },
+        { iD: 4, toggleName: 'Saloon mood', backgroundColor: '#6e7582ff', isFavorite: false, isDimmer: false },
+        { iD: 5, toggleName: 'Entrance stairs', backgroundColor: '#d35d6eff', isFavorite: false, isDimmer: false },
+        { iD: 6, toggleName: 'Stairs to second floor', backgroundColor: '#6e5773ff', isFavorite: false, isDimmer: false }
       ]
     },
     {
       name: 'First floor',
       outlets: [
-        { iD: 11, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 12, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 14, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 15, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 16, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false }
+        { iD: 11, toggleName: 'Saloon mood', backgroundColor: '#745c97ff', isFavorite: false, isDimmer: false },
+        { iD: 12, toggleName: 'Entrance stairs', backgroundColor: '#6e5773ff', isFavorite: false, isDimmer: false },
+        { iD: 13, toggleName: 'Stairs to second floor', backgroundColor: '#6886c5ff', isFavorite: false, isDimmer: false },
+        { iD: 14, toggleName: 'Bedroom night', backgroundColor: '#d35d6eff', isFavorite: false, isDimmer: false },
+        { iD: 15, toggleName: 'Kitchen sink', backgroundColor: '#6e7582ff', isFavorite: false, isDimmer: false },
+        { iD: 16, toggleName: 'Saloon indirect', backgroundColor: '#dd5e5eff', isFavorite: false, isDimmer: false }
       ]
     },
     {
       name: 'Second floor',
       outlets: [
-        { iD: 17, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 18, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 19, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 20, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 21, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 22, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false }
+        { iD: 17, toggleName: 'Saloon mood', backgroundColor: '#ff92d5ff', isFavorite: false, isDimmer: false },
+        { iD: 18, toggleName: 'Entrance stairs', backgroundColor: '#55bcbbff', isFavorite: false, isDimmer: false },
+        { iD: 19, toggleName: 'Stairs to second floor', backgroundColor: '#95b8d1ff', isFavorite: false, isDimmer: false },
+        { iD: 20, toggleName: 'Bedroom night', backgroundColor: '#ffaa89ff', isFavorite: false, isDimmer: false },
+        { iD: 21, toggleName: 'Kitchen sink', backgroundColor: '#55b493ff', isFavorite: false, isDimmer: false },
+        { iD: 22, toggleName: 'Saloon indirect', backgroundColor: '#809bceff', isFavorite: false, isDimmer: false }
       ]
     },
     {
       name: 'Roof',
       outlets: [
 
-        { iD: 23, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 24, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 25, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 26, toggleName: 'Bedroom night', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 27, toggleName: 'Kitchen sink', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 28, toggleName: 'Saloon indirect', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 29, toggleName: 'Saloon mood', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 30, toggleName: 'Entrance stairs', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
-        { iD: 31, toggleName: 'Stairs to second floor', backgroundColor: this.getRandomHex(), isFavorite: false, isDimmer: false },
+        { iD: 23, toggleName: 'Saloon mood', backgroundColor: '#dd5e5eff', isFavorite: false, isDimmer: false },
+        { iD: 24, toggleName: 'Entrance stairs', backgroundColor: '#6e7582ff', isFavorite: false, isDimmer: false },
+        { iD: 25, toggleName: 'Stairs to second floor', backgroundColor: '#6886c5ff', isFavorite: false, isDimmer: false },
+        { iD: 26, toggleName: 'Bedroom night', backgroundColor: '#55b493ff', isFavorite: false, isDimmer: false },
+        { iD: 27, toggleName: 'Kitchen sink', backgroundColor: '#745c97ff', isFavorite: false, isDimmer: false },
+        { iD: 28, toggleName: 'Saloon indirect', backgroundColor: '#ffaa89ff', isFavorite: false, isDimmer: false },
+        { iD: 29, toggleName: 'Saloon mood', backgroundColor: '#d35d6eff', isFavorite: false, isDimmer: false },
+        { iD: 30, toggleName: 'Entrance stairs', backgroundColor: '#6e5773ff', isFavorite: false, isDimmer: false },
+        { iD: 31, toggleName: 'Stairs to second floor', backgroundColor: '#ffaa89ff', isFavorite: false, isDimmer: false },
         {
-          iD: 32, toggleName: 'TV', backgroundColor: '#4baea0', icon: 'tv', isFavorite: false,
+          iD: 32, toggleName: 'TV', backgroundColor: '#ffaa89ff', icon: 'tv', isFavorite: false,
           remoteShortcuts: ['power-outline', 'radio-button-off-outline', 'chevron-up-outline', 'chevron-down-outline'], isDimmer: false
         }
       ]
