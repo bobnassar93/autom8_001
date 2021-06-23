@@ -83,61 +83,70 @@
 
       <!-- List -->
       <ng-container *ngIf="orderType === 'list'">
-        <ng-container *ngFor='let item of functions.items; let i = index'>
+        <ng-container *ngFor='let floor of functions.floors; let i = index'>
           <ion-col size="12">
-            <ion-item detail="false" lines="full" button="true" (click)="functions.toggleCollapsible(i)"
+            <ion-item detail="false" lines="full" button="true" (click)="functions.toggleCollapsibleFloor(i)"
               class="ion-no-padding-padding-start" style="--background: transparent;">
-              <ion-icon name="chevron-forward-outline" *ngIf="!item.open"></ion-icon>
-              <ion-icon name="chevron-down-outline" *ngIf="item.open"></ion-icon>
-              <ion-label>&nbsp;{{item.name}}</ion-label>
+              <ion-icon name="chevron-forward-outline" *ngIf="!floor.floorOpen"></ion-icon>
+              <ion-icon name="chevron-down-outline" *ngIf="floor.floorOpen"></ion-icon>
+              <ion-label>&nbsp; {{floor.NAME}}</ion-label>
             </ion-item>
           </ion-col>
-          <ng-container *ngIf="item.open">
-            <ion-col class="transition" size="12" *ngFor='let outlet of item.outlets; let j = index'>
-              <div class="ion-item-div" style="background: {{outlet.backgroundColor}};">
+          <ng-container *ngFor="let room of floor.MyRooms; let j = index">
+            <ion-col size="12">
+              <ion-item detail="false" lines="full" button="true" (click)="functions.toggleCollapsibleRoom(i, j)"
+                class="ion-no-padding-padding-start" style="--background: transparent;">
+                <ion-icon name="chevron-forward-outline" *ngIf="!room.roomOpen"></ion-icon>
+                <ion-icon name="chevron-down-outline" *ngIf="room.roomOpen"></ion-icon>
+                <ion-label>&nbsp; {{room.NAME}}</ion-label>
+              </ion-item>
+            </ion-col>
+           <ng-container *ngIf="room.roomOpen">
+              <ion-col class="transition" size="12" *ngFor='let outlet of room.MyOutlets; let j = index'>
+                <div class="ion-item-div" style="background: {{outlet.UI_Element.COLOR}};">
 
-                <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="!editingFavorites">
-                  <ion-row>
-                    <!-- Column -->
-                    <ion-col size="10"
-                      (click)="!outlet.isDimmer && !outlet.remoteShortcuts ? functions.manualToggle($event, myToggle) : ''"
-                      class="ion-col">
-                      <!-- Label -->
-                      <ion-label class="text-shadow ion-label">{{outlet.toggleName}}
-                      </ion-label>
-                    </ion-col>
+                  <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="!editingFavorites">
+                    <ion-row>
+                      <!-- Column -->
+                      <ion-col size="10"
+                        (click)="!outlet.isDimmer && !outlet.remoteShortcuts ? functions.manualToggle($event, myToggle) : ''"
+                        class="ion-col">
+                        <!-- Label -->
+                        <ion-label class="text-shadow ion-label">{{outlet.toggleName}}
+                        </ion-label>
+                      </ion-col>
 
-                    <!-- Column -->
-                    <ion-col size="2" style="text-align: right;" class="ion-col">
-                      <!-- Toggle -->
-                      <ion-toggle name="outputToggle" #myToggle (ionChange)="functions.toggleLight($event, myToggle)"
-                        [checked]="functions.isToggledAll" class="ion-toggle">
-                      </ion-toggle>
-                    </ion-col>
-                  </ion-row>
-                  <ion-row style="height: 50px;">
+                      <!-- Column -->
+                      <ion-col size="2" style="text-align: right;" class="ion-col">
+                        <!-- Toggle -->
+                        <ion-toggle name="outputToggle" #myToggle (ionChange)="functions.toggleLight($event, myToggle)"
+                          [checked]="functions.isToggledAll" class="ion-toggle">
+                        </ion-toggle>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row style="height: 50px;">
 
-                    <!-- Column -->
-                    <ion-col size="10" class="full-height ion-col" (click)="!outlet.isDimmer && !outlet.remoteShortcuts ? functions.manualToggle($event, myToggle) :
+                      <!-- Column -->
+                      <ion-col size="10" class="full-height ion-col" (click)="!outlet.isDimmer && !outlet.remoteShortcuts ? functions.manualToggle($event, myToggle) :
                 ''">
+                        <!-- Range -->
+                        <ion-range min="0" max="100" step="1" value="{{outlet.dimmingValue}}" #myRange
+                          *ngIf="outlet.isDimmer" (ionChange)="functions.changeDimmingValue($event, myToggle)"
+                          class="ion-range" pin="true">
+                          <ion-icon slot="start" size="small" ios="sunny" md="sunny-sharp"></ion-icon>
+                          <ion-icon slot="end" ios="sunny" md="sunny-sharp"></ion-icon>
+                        </ion-range>
 
-                      <!-- Range -->
-                      <ion-range min="0" max="100" step="1" value="{{outlet.dimmingValue}}" #myRange
-                        *ngIf="outlet.isDimmer" (ionChange)="functions.changeDimmingValue($event, myToggle)"
-                        class="ion-range" pin="true">
-                        <ion-icon slot="start" size="small" ios="sunny" md="sunny-sharp"></ion-icon>
-                        <ion-icon slot="end" ios="sunny" md="sunny-sharp"></ion-icon>
-                      </ion-range>
-
-                      <!-- TV remote buttons -->
-                      <div *ngIf="outlet.remoteShortcuts" class="remote-shortcuts full-height">
-                        <ion-button size="small" *ngFor="let remoteBtn of outlet.remoteShortcuts" fill="clear">
-                          <ion-icon name="{{remoteBtn}}"></ion-icon>
-                        </ion-button>
-                        <ion-button (click)="functions.remoteButtonPressed($event, outlet.iD)" fill="clear">
-                          <ion-icon ios="keypad" md="keypad-sharp"></ion-icon>
-                        </ion-button>
-                      </div></ion-col>
+                        <!-- TV remote buttons -->
+                        <div *ngIf="outlet.remoteShortcuts" class="remote-shortcuts full-height">
+                          <ion-button size="small" *ngFor="let remoteBtn of outlet.remoteShortcuts" fill="clear">
+                            <ion-icon name="{{remoteBtn}}"></ion-icon>
+                          </ion-button>
+                          <ion-button (click)="functions.remoteButtonPressed($event, outlet.OUTLET_ID)" fill="clear">
+                            <ion-icon ios="keypad" md="keypad-sharp"></ion-icon>
+                          </ion-button>
+                        </div>
+                      </ion-col>
 
                       <!-- Column -->
                       <ion-col size="2" class="ion-col">
@@ -147,28 +156,29 @@
                           md="chevron-forward-sharp">
                         </ion-icon>
                       </ion-col>
-                      </ion-row>
-                      </ion-grid>
+                    </ion-row>
+                  </ion-grid>
 
-                <!-- Edit Favorites List -->
-                <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="editingFavorites">
-                  <ion-row>
-                    <!-- Column -->
-                    <ion-col size="12" style="text-align: right;" class="ion-col">
-                      <ion-item style="--padding-start: 10px;" class="ion-item">
-                        <!-- Toggle -->
-                        <ion-label class="no-padding no-margin text-shadow ion-label">{{outlet.toggleName}}
-                        </ion-label>
-                        <ion-checkbox style="--background-checked: {{outlet.backgroundColor}}"
-                          (ionChange)="functions.addToFavoritesList(outlet, $event)" [checked]="outlet.isFavorite"
-                          class="ion-checkbox">
-                        </ion-checkbox>
-                      </ion-item>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-              </div>
-            </ion-col>
+                  <!-- Edit Favorites List -->
+                  <ion-grid class="ion-no-margin ion-no-padding full-width ion-grid" *ngIf="editingFavorites">
+                    <ion-row>
+                      <!-- Column -->
+                      <ion-col size="12" style="text-align: right;" class="ion-col">
+                        <ion-item style="--padding-start: 10px;" class="ion-item">
+                          <!-- Toggle -->
+                          <ion-label class="no-padding no-margin text-shadow ion-label">{{outlet.NAME}}
+                          </ion-label>
+                          <ion-checkbox style="--background-checked: {{outlet.UI_Element.COLOR}}"
+                            (ionChange)="functions.addToFavoritesList(outlet, $event)" [checked]="outlet.isFavorite"
+                            class="ion-checkbox">
+                          </ion-checkbox>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </ion-col>
+           </ng-container>
           </ng-container>
         </ng-container>
 

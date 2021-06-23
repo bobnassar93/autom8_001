@@ -1,7 +1,7 @@
 import { Injectable, OnInit, } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { TvRemoteComponent } from '../ui/popover/tv-remote/tv-remote.component';
-import { All_Data } from './proxy.service';
+import { All_Data, Ui } from './proxy.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,32 +9,34 @@ import { All_Data } from './proxy.service';
 export class FunctionsService implements OnInit {
 
   isToggledAll = false;
-  colors = [
-    '#809bceff',
-    '#55b493ff',
-    '#ffaa89ff',
-    '#95b8d1ff',
-    '#55bcbbff',
-    '#ff92d5ff',
-    '#dd5e5eff',
-    '#6e7582ff',
-    '#e6913bff',
-    '#6886c5ff',
-    '#6e5773ff',
-    '#745c97ff',
-    '#e2afffff',
-    '#a2d2ffff',
-    '#ffafccff',
-    '#0096c7ff',
-    '#446583ff',
-    '#9f6af8ff',
-    '#86e8d2ff',
-    '#6e5bd8ff',
-  ];
+  // colors = [
+  //   '#809bceff',
+  //   '#55b493ff',
+  //   '#ffaa89ff',
+  //   '#95b8d1ff',
+  //   '#55bcbbff',
+  //   '#ff92d5ff',
+  //   '#dd5e5eff',
+  //   '#6e7582ff',
+  //   '#e6913bff',
+  //   '#6886c5ff',
+  //   '#6e5773ff',
+  //   '#745c97ff',
+  //   '#e2afffff',
+  //   '#a2d2ffff',
+  //   '#ffafccff',
+  //   '#0096c7ff',
+  //   '#446583ff',
+  //   '#9f6af8ff',
+  //   '#86e8d2ff',
+  //   '#6e5bd8ff',
+  // ];
+
+  colors: Ui[] = [];
 
   public itemClass = new All_Data();
 
-  public items: any = [
+  public floors: any = [
     {
       name: 'Basement',
       outlets: [
@@ -198,13 +200,17 @@ export class FunctionsService implements OnInit {
     return this.colors[Math.floor(Math.random() * this.colors.length)];
   }
 
-  toggleCollapsible(index) {
-    this.items[index].open = !this.items[index].open;
+  toggleCollapsibleFloor(index) {
+    this.floors[index].floorOpen = !this.floors[index].floorOpen;
+  }
+
+  toggleCollapsibleRoom(floorIndex, roomIndex) {
+    this.floors[floorIndex][roomIndex].roomOpen = !this.floors[floorIndex][roomIndex].roomOpen;
   }
 
   getItem(index: string, id?: string) {
     if(id){
-      return this.items[index].outlets[id];
+      return this.floors[index].outlets[id];
     }else{
       return this.favorites[index];
     }

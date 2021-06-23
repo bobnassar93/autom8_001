@@ -55,7 +55,8 @@ export class Tab2Component implements OnInit {
         if (result != null) {
           this.cmv.ticket = result.User.Ticket;
           this.functions.itemClass = result;
-          //this.functions.items = result;
+          this.functions.colors = result.MyColors;
+          this.functions.floors = result.Floors;
         }
       }
     );

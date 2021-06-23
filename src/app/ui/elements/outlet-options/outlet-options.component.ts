@@ -21,9 +21,9 @@ export class OutletOptionsComponent implements OnInit {
   }
 
   previewColor(color, el) {
-    el.style = `background: ${color}`;
+    el.style = `background: ${color.COLOR}`;
 
-    this.functions.items[this.index].outlets[this.id].backgroundColor = color;
+    this.functions.floors[this.index].outlets[this.id].backgroundColor = color.COLOR;
   }
 
   editOutlet(){
