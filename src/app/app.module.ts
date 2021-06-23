@@ -17,6 +17,9 @@ import { FloorComponent } from './ui/elements/floor/floor.component';
 import { ItemComponent } from './ui/elements/item/item.component';
 import { RoomComponent } from './ui/elements/room/room.component';
 import { OutletOptionsComponent } from './ui/elements/outlet-options/outlet-options.component';
+import { CommonService } from './services/common.service';
+import { Proxy } from './services/proxy.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent,
@@ -25,8 +28,8 @@ import { OutletOptionsComponent } from './ui/elements/outlet-options/outlet-opti
        TvRemoteComponent, FloorComponent,
         ItemComponent, RoomComponent, OutletOptionsComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, FunctionsService],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, FunctionsService, Proxy, CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
