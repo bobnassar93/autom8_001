@@ -1,6 +1,7 @@
 import { Injectable, OnInit, } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { TvRemoteComponent } from '../ui/popover/tv-remote/tv-remote.component';
+import { All_Data } from './proxy.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,8 @@ export class FunctionsService implements OnInit {
     '#86e8d2ff',
     '#6e5bd8ff',
   ];
+
+  public itemClass = new All_Data();
 
   public items: any = [
     {

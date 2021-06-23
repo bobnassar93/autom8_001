@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { CommonService } from 'src/app/services/common.service';
 import { FunctionsService } from 'src/app/services/functions.service';
+import { Params_Get_All_Data, Proxy, UserInfo } from 'src/app/services/proxy.service';
 import { TabsComponent } from '../tabs.component';
 
 @Component({
@@ -16,9 +19,10 @@ export class Tab2Component implements OnInit {
   editingFavorites = false;
   showFavorites = false;
   header;
+  proxyAllData: Subscription;
 
   constructor(public functions: FunctionsService,
-    public popoverCtrl: PopoverController, public tabs: TabsComponent) {
+    public popoverCtrl: PopoverController, public tabs: TabsComponent, public proxy: Proxy, public cmv: CommonService) {
     this.gridColCount = functions.getColumnCount();
 
     this.orderType = functions.getOrderType();
@@ -36,6 +40,25 @@ export class Tab2Component implements OnInit {
     this.reorderItems();
 
     this.header = document.querySelector('#_header') as HTMLIonHeaderElement;
+
+    const paramsAllData = new Params_Get_All_Data();
+    paramsAllData.My_UserInfo = new UserInfo();
+    paramsAllData.My_UserInfo.UserName = 'Admin';
+    paramsAllData.My_UserInfo.Password = 'Admin';
+    paramsAllData.My_UserInfo.IsAuthenticated = false;
+    paramsAllData.My_UserInfo.OwnerID = 1;
+    paramsAllData.My_UserInfo.UserID = 1;
+    paramsAllData.My_UserInfo.Ticket = '';
+
+    this.proxyAllData = this.proxy.Get_All_Data(paramsAllData).subscribe(
+      result => {
+        if (result != null) {
+          this.cmv.ticket = result.User.Ticket;
+          this.functions.itemClass = result;
+          //this.functions.items = result;
+        }
+      }
+    );
   }
   counter() {
     return new Array(this.gridColCount);
